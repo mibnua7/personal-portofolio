@@ -16,15 +16,16 @@
                     <img src="images/logo-porto.jpeg" alt="Ibnu Abas Logo" class="logo-img">
                 </a>
                 <ul>
-                    <li><a href="#hero">Beranda</a></li>
-                    <li><a href="#work">Proyek</a></li>
-                    <li><a href="#about">Tentang</a></li>
-                    <li><a href="#contact">Kontak</a></li>
+                    <li><a href="#hero" class="nav-link" data-section="hero">Beranda</a></li>
+                    <li><a href="#work" class="nav-link" data-section="work">Proyek</a></li>
+                    <li><a href="#about" class="nav-link" data-section="about">Tentang</a></li>
+                    <li><a href="#contact" class="nav-link" data-section="contact">Kontak</a></li>
                     <li>
                         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
                             <i class="fas fa-moon"></i>
                         </button>
                     </li>
+                    <div class="nav-slider"></div>
                 </ul>
             </nav>
         </div>
@@ -47,7 +48,7 @@
             </div>
             <div class="project-grid">
                 <div class="project-item project-1">
-                    <a href="project/FireAlarm.html" target="_blank">
+                    <a href="project/fire-alarm.html" target="_blank">
                         <img src="images/project1.jpeg" alt="Fire Alarm">
                         <div class="project-info">
                             <h4>Fire Alarm</h4>
@@ -58,7 +59,7 @@
                 </div>
 
                 <div class="project-item">
-                    <a href="#" onclick="alert('Halaman detail project belum tersedia'); return false;">
+                    <a href="project/smart-farm.html" target="_blank">
                         <img src="images/project2.jpeg" alt="Smart Farm">
                         <div class="project-info">
                             <h4>Smart Farm</h4>
@@ -69,7 +70,7 @@
                 </div>
 
                 <div class="project-item">
-                    <a href="#" onclick="alert('Halaman detail project belum tersedia'); return false;">
+                    <a href="project/monitoring-app.html" target="_blank">
                         <img src="images/project3.jpeg" alt="App Pemantau Suhu dan Kelembapan">
                         <div class="project-info">
                             <h4>App Pemantau Suhu dan Kelembapan</h4>
@@ -80,7 +81,7 @@
                 </div>
 
                 <div class="project-item">
-                    <a href="#" onclick="alert('Halaman detail project belum tersedia'); return false;">
+                    <a href="project/smart-locker.html" target="_blank">
                         <img src="images/project4.jpeg" alt="Smart Locker">
                         <div class="project-info">
                             <h4>Smart Locker</h4>
@@ -167,6 +168,113 @@
                 icon.classList.add('fa-moon');
                 localStorage.setItem('theme', 'dark');
             }
+        });
+
+        // Navigation slider functionality
+        const navLinks = document.querySelectorAll('.nav-link');
+        const navSlider = document.querySelector('.nav-slider');
+        const sections = document.querySelectorAll('section[id]');
+
+        function updateSlider(activeLink) {
+            if (!activeLink) {
+                navSlider.style.opacity = '0';
+                navSlider.style.width = '0';
+                return;
+            }
+
+            const linkRect = activeLink.getBoundingClientRect();
+            const navRect = activeLink.closest('ul').getBoundingClientRect();
+            
+            const leftOffset = linkRect.left - navRect.left;
+            const width = linkRect.width;
+
+            navSlider.style.opacity = '1';
+            navSlider.style.width = `${width}px`;
+            navSlider.style.transform = `translateX(${leftOffset}px)`;
+            navSlider.classList.add('active');
+        }
+
+        // Scroll spy functionality
+        function scrollSpy() {
+            const scrollPos = window.scrollY + 100;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollPos >= sectionTop && scrollPos <= sectionTop + sectionHeight) {
+                    // Remove active class from all links
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    
+                    // Add active class to current section link
+                    const activeLink = document.querySelector(`.nav-link[data-section="${sectionId}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                        updateSlider(activeLink);
+                    }
+                }
+            });
+        }
+
+        // Click handler for nav links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Remove active from all links
+                navLinks.forEach(l => l.classList.remove('active'));
+                
+                // Add active to clicked link
+                link.classList.add('active');
+                updateSlider(link);
+                
+                // Smooth scroll to section
+                const targetId = link.getAttribute('data-section');
+                const targetSection = document.getElementById(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+
+            // Hover effects
+            link.addEventListener('mouseenter', () => {
+                if (!link.classList.contains('active')) {
+                    updateSlider(link);
+                }
+            });
+        });
+
+        // Mouse leave nav to return to active section
+        const navUl = document.querySelector('nav ul');
+        navUl.addEventListener('mouseleave', () => {
+            const activeLink = document.querySelector('.nav-link.active');
+            updateSlider(activeLink);
+        });
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            scrollSpy();
+            
+            // Set initial active state for hero section
+            const heroLink = document.querySelector('.nav-link[data-section="hero"]');
+            if (heroLink && !document.querySelector('.nav-link.active')) {
+                heroLink.classList.add('active');
+                updateSlider(heroLink);
+            }
+        });
+
+        // Listen for scroll events
+        window.addEventListener('scroll', scrollSpy);
+        
+        // Handle resize
+        window.addEventListener('resize', () => {
+            const activeLink = document.querySelector('.nav-link.active');
+            updateSlider(activeLink);
         });
     </script>
 </body>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Farm - Detail Proyek</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="project-detail-bg">
+    <header class="mini-header">
+        <div class="container">
+            <a href="../index.html#work" class="back-link"><i class="fas fa-arrow-left"></i> Kembali ke Proyek</a>
+        </div>
+    </header>
+
+    <section id="project-detail">
+        <div class="container">
+            <h1 class="project-title">Smart Farm</h1>
+            <p class="project-meta">Kategori: IoT / Microcontroller | Tahun: 2024 | Platform: Arduino IDE</p>
+            
+            <div class="detail-image-gallery">
+                <img src="../images/project2.jpeg" alt="Smart Farm - Gambar Utama" class="main-detail-image">
+            </div>
+
+            <div class="project-description-content">
+                <h3>Tentang Proyek Ini</h3>
+                <p>Proyek "Smart Farm" adalah sistem pemantauan dan otomasi pertanian berbasis IoT yang dirancang untuk mengoptimalkan kondisi pertumbuhan tanaman melalui monitoring kelembapan tanah dan suhu lingkungan secara real-time.</p>
+                
+                <h3>Fitur Utama</h3>
+                <ul>
+                    <li>Sensor kelembapan tanah untuk monitoring kondisi media tanam</li>
+                    <li>Sensor suhu dan kelembapan udara (DHT22)</li>
+                    <li>Sistem penyiraman otomatis berdasarkan kondisi tanah</li>
+                    <li>Notifikasi IoT melalui aplikasi mobile</li>
+                    <li>Data logging untuk analisis pertumbuhan</li>
+                </ul>
+
+                <h3>Teknologi yang Digunakan</h3>
+                <ul>
+                    <li>ESP32 sebagai mikrokontroler utama</li>
+                    <li>Sensor kelembapan tanah kapasitif</li>
+                    <li>Sensor DHT22 untuk suhu dan kelembapan</li>
+                    <li>Relay module untuk kontrol pompa air</li>
+                    <li>Platform IoT Blynk untuk monitoring</li>
+                </ul>
+
+                <p><strong>Status:</strong> Halaman detail sedang dalam pengembangan.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Muhammad Ibnu Abas. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Apply saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+        }
+    </script>
+</body>
+</html>

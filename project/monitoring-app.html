@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Pemantau Suhu dan Kelembapan - Detail Proyek</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="project-detail-bg">
+    <header class="mini-header">
+        <div class="container">
+            <a href="../index.html#work" class="back-link"><i class="fas fa-arrow-left"></i> Kembali ke Proyek</a>
+        </div>
+    </header>
+
+    <section id="project-detail">
+        <div class="container">
+            <h1 class="project-title">App Pemantau Suhu dan Kelembapan</h1>
+            <p class="project-meta">Kategori: Mobile App | Tahun: 2024 | Platform: MIT App Inventor</p>
+            
+            <div class="detail-image-gallery">
+                <img src="../images/project3.jpeg" alt="App Pemantau - Gambar Utama" class="main-detail-image">
+            </div>
+
+            <div class="project-description-content">
+                <h3>Tentang Proyek Ini</h3>
+                <p>Aplikasi mobile "Pemantau Suhu dan Kelembapan" adalah solusi IoT yang memungkinkan pengguna untuk memantau kondisi lingkungan secara real-time melalui smartphone. Aplikasi ini dikembangkan menggunakan MIT App Inventor dan terhubung dengan sensor melalui API.</p>
+                
+                <h3>Fitur Utama</h3>
+                <ul>
+                    <li><strong>Real-time Monitoring:</strong> Tampilan data suhu dan kelembapan secara langsung</li>
+                    <li><strong>Grafik Historical:</strong> Visualisasi data dalam bentuk chart untuk analisis trend</li>
+                    <li><strong>Alert System:</strong> Notifikasi push saat kondisi melebihi batas normal</li>
+                    <li><strong>Data Export:</strong> Kemampuan export data untuk analisis lebih lanjut</li>
+                    <li><strong>Multi-device Support:</strong> Dapat menampilkan data dari beberapa sensor sekaligus</li>
+                </ul>
+
+                <h3>Teknologi yang Digunakan</h3>
+                <ul>
+                    <li><strong>MIT App Inventor:</strong> Platform pengembangan aplikasi mobile visual</li>
+                    <li><strong>REST API:</strong> Komunikasi data antara sensor dan aplikasi</li>
+                    <li><strong>JSON Format:</strong> Format pertukaran data yang efisien</li>
+                    <li><strong>Firebase:</strong> Backend database untuk penyimpanan data</li>
+                    <li><strong>Chart Components:</strong> Library untuk visualisasi data</li>
+                </ul>
+
+                <h3>Arsitektur Sistem</h3>
+                <ul>
+                    <li>Sensor DHT22 mengirim data ke microcontroller (ESP32)</li>
+                    <li>ESP32 mengirim data ke cloud database via WiFi</li>
+                    <li>Mobile app mengambil data melalui REST API</li>
+                    <li>Data ditampilkan dalam bentuk dashboard interaktif</li>
+                </ul>
+
+                <h3>Hasil dan Dampak</h3>
+                <p>Aplikasi ini berhasil memberikan solusi monitoring yang mudah digunakan dan accessible. Pengguna dapat memantau kondisi lingkungan dari mana saja, memberikan kemudahan dalam mengontrol sistem HVAC, greenhouse, atau ruang server. Interface yang user-friendly membuat aplikasi ini cocok untuk berbagai kalangan pengguna.</p>
+                
+                <div class="project-links">
+                    <p><strong>Status:</strong> Aplikasi telah diuji dan siap untuk deployment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Muhammad Ibnu Abas. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Apply saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+        }
+    </script>
+</body>
+</html>

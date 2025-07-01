@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Locker - Detail Proyek</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="project-detail-bg">
+    <header class="mini-header">
+        <div class="container">
+            <a href="../index.html#work" class="back-link"><i class="fas fa-arrow-left"></i> Kembali ke Proyek</a>
+        </div>
+    </header>
+
+    <section id="project-detail">
+        <div class="container">
+            <h1 class="project-title">Smart Locker</h1>
+            <p class="project-meta">Kategori: IoT / Microcontroller | Tahun: 2024 | Platform: Arduino IDE</p>
+            
+            <div class="detail-image-gallery">
+                <img src="../images/project4.jpeg" alt="Smart Locker - Gambar Utama" class="main-detail-image">
+            </div>
+
+            <div class="project-description-content">
+                <h3>Tentang Proyek Ini</h3>
+                <p>Smart Locker adalah sistem keamanan modern yang menggabungkan teknologi RFID dan PIN untuk memberikan akses yang aman dan fleksibel. Sistem ini dirancang untuk aplikasi perkantoran, sekolah, gym, atau area publik yang membutuhkan penyimpanan personal yang aman.</p>
+                
+                <h3>Fitur Keamanan</h3>
+                <ul>
+                    <li><strong>Dual Authentication:</strong> Kombinasi RFID card dan PIN untuk keamanan berlapis</li>
+                    <li><strong>User Registration:</strong> Sistem pendaftaran pengguna baru dengan admin access</li>
+                    <li><strong>Access Logging:</strong> Pencatatan setiap aktivitas buka/tutup locker</li>
+                    <li><strong>Emergency Override:</strong> Master key untuk akses darurat</li>
+                    <li><strong>Auto-lock Timer:</strong> Otomatis mengunci setelah periode tertentu</li>
+                </ul>
+
+                <h3>Komponen Sistem</h3>
+                <ul>
+                    <li><strong>Arduino Uno/ESP32:</strong> Microcontroller utama untuk mengontrol sistem</li>
+                    <li><strong>RFID Reader (RC522):</strong> Pembaca kartu RFID untuk identifikasi user</li>
+                    <li><strong>Keypad 4x4:</strong> Input PIN dan navigasi menu</li>
+                    <li><strong>LCD Display 16x2:</strong> Interface pengguna dan status informasi</li>
+                    <li><strong>Servo Motor:</strong> Aktuator untuk mekanisme kunci</li>
+                    <li><strong>Buzzer:</strong> Feedback audio untuk status sistem</li>
+                    <li><strong>LED Indicators:</strong> Status visual (hijau/merah)</li>
+                </ul>
+
+                <h3>Alur Kerja Sistem</h3>
+                <ul>
+                    <li>User mendekatkan RFID card ke reader</li>
+                    <li>Sistem memverifikasi card yang terdaftar</li>
+                    <li>Jika valid, user diminta memasukkan PIN</li>
+                    <li>Setelah autentikasi sukses, servo membuka kunci</li>
+                    <li>LCD menampilkan "Access Granted" dan timer countdown</li>
+                    <li>Sistem otomatis mengunci setelah timeout atau user konfirmasi</li>
+                </ul>
+
+                <h3>Mode Operasi</h3>
+                <ul>
+                    <li><strong>User Mode:</strong> Akses normal dengan RFID + PIN</li>
+                    <li><strong>Admin Mode:</strong> Registrasi user baru dan konfigurasi sistem</li>
+                    <li><strong>Emergency Mode:</strong> Override access dengan master PIN</li>
+                    <li><strong>Maintenance Mode:</strong> Testing komponen dan kalibrasi</li>
+                </ul>
+
+                <h3>Keunggulan Sistem</h3>
+                <p>Smart Locker ini memberikan solusi keamanan yang praktis dengan tingkat keamanan tinggi. Kombinasi RFID dan PIN memastikan hanya user yang berwenang yang dapat mengakses locker. Sistem logging memberikan audit trail yang berguna untuk keamanan dan manajemen. Design modular memungkinkan skalabilitas untuk multiple locker dalam satu jaringan.</p>
+                
+                <div class="project-links">
+                    <p><strong>Status:</strong> Prototype telah berhasil diuji dan siap untuk implementasi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Muhammad Ibnu Abas. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Apply saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+        }
+    </script>
+</body>
+</html>
