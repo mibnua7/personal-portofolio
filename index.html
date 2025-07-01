@@ -197,8 +197,8 @@
         }
 
         function updateSlider(activeLink) {
-            if (!activeLink || window.innerWidth <= 480) {
-                // Disable slider on very small screens
+            // Disable slider on mobile devices for better performance and UX
+            if (!activeLink || window.innerWidth <= 768) {
                 navSlider.style.opacity = '0';
                 navSlider.style.width = '0';
                 return;
@@ -221,7 +221,9 @@
 
         // Scroll spy functionality
         function scrollSpy() {
-            const scrollPos = window.scrollY + 100;
+            // Dynamic offset based on screen size
+            const offset = window.innerWidth <= 768 ? 120 : 100;
+            const scrollPos = window.scrollY + offset;
 
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
