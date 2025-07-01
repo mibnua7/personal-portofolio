@@ -52,13 +52,13 @@ header {
 }
 
 header.hidden {
-    transform: translateY(-100%);
-    opacity: 0;
+    transform: translateY(-100%) !important;
+    opacity: 0 !important;
 }
 
 header.visible {
-    transform: translateY(0);
-    opacity: 1;
+    transform: translateY(0) !important;
+    opacity: 1 !important;
 }
 
 nav {
@@ -67,10 +67,18 @@ nav {
     align-items: center;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
 .logo-img {
     height: 32px;
     width: auto;
     transition: height 0.3s ease;
+    vertical-align: middle;
+    margin-top: 2px; /* Small adjustment to center better */
 }
 
 nav ul {
@@ -360,6 +368,17 @@ body.light-mode header {
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+}
+
+/* Ensure auto-hide works in light mode */
+body.light-mode header.hidden {
+    transform: translateY(-100%) !important;
+    opacity: 0 !important;
+}
+
+body.light-mode header.visible {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
 }
 
 body.light-mode nav ul li a {
