@@ -7,69 +7,69 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-<body class="project-detail-bg">
-    <header class="mini-header">
-        <div class="container">
-            <a href="../index.html#work" class="back-link"><i class="fas fa-arrow-left"></i> Kembali ke Proyek</a>
-        </div>
-    </header>
+<body class="project-detail">
+
 
     <section id="project-detail">
         <div class="container">
+            <div class="back-to-projects">
+                <a href="../index.html#work" class="back-button"><i class="fas fa-arrow-left"></i> <span data-lang="back-to-projects">Kembali ke Proyek</span></a>
+            </div>
+            
             <h1 class="project-title">Smart Locker</h1>
-            <p class="project-meta">Kategori: IoT / Microcontroller | Tahun: 2024 | Platform: Arduino IDE</p>
+            <p class="project-meta"><span data-lang="category">Kategori</span>: IoT / Microcontroller | <span data-lang="year">Tahun</span>: 2024 | Platform: Arduino IDE</p>
             
             <div class="detail-image-gallery">
                 <img src="../images/project4.jpeg" alt="Smart Locker - Gambar Utama" class="main-detail-image">
             </div>
 
             <div class="project-description-content">
-                <h3>Tentang Proyek Ini</h3>
-                <p>Smart Locker adalah sistem keamanan modern yang menggabungkan teknologi RFID dan PIN untuk memberikan akses yang aman dan fleksibel. Sistem ini dirancang untuk aplikasi perkantoran, sekolah, gym, atau area publik yang membutuhkan penyimpanan personal yang aman.</p>
+                <h3 data-lang="about-project">Tentang Proyek Ini</h3>
+                <p data-lang="smart-locker-desc">Smart Locker adalah sistem keamanan modern yang menggabungkan teknologi RFID dan PIN untuk memberikan akses yang aman dan fleksibel. Sistem ini dirancang untuk aplikasi perkantoran, sekolah, gym, atau area publik yang membutuhkan penyimpanan personal yang aman.</p>
                 
-                <h3>Fitur Keamanan</h3>
+                <h3 data-lang="security-features">Fitur Keamanan</h3>
                 <ul>
-                    <li><strong>Dual Authentication:</strong> Kombinasi RFID card dan PIN untuk keamanan berlapis</li>
-                    <li><strong>User Registration:</strong> Sistem pendaftaran pengguna baru dengan admin access</li>
-                    <li><strong>Access Logging:</strong> Pencatatan setiap aktivitas buka/tutup locker</li>
-                    <li><strong>Emergency Override:</strong> Master key untuk akses darurat</li>
-                    <li><strong>Auto-lock Timer:</strong> Otomatis mengunci setelah periode tertentu</li>
+                    <li data-lang="dual-auth"><strong>Dual Authentication:</strong> Kombinasi RFID card dan PIN untuk keamanan berlapis</li>
+                    <li data-lang="user-reg"><strong>User Registration:</strong> Sistem pendaftaran pengguna baru dengan admin access</li>
+                    <li data-lang="access-log"><strong>Access Logging:</strong> Pencatatan setiap aktivitas buka/tutup locker</li>
+                    <li data-lang="emergency"><strong>Emergency Override:</strong> Master key untuk akses darurat</li>
+                    <li data-lang="auto-lock"><strong>Auto-lock Timer:</strong> Otomatis mengunci setelah periode tertentu</li>
                 </ul>
 
-                <h3>Komponen Sistem</h3>
+                <h3 data-lang="system-components">Komponen Sistem</h3>
                 <ul>
-                    <li><strong>Arduino Uno/ESP32:</strong> Microcontroller utama untuk mengontrol sistem</li>
-                    <li><strong>RFID Reader (RC522):</strong> Pembaca kartu RFID untuk identifikasi user</li>
-                    <li><strong>Keypad 4x4:</strong> Input PIN dan navigasi menu</li>
-                    <li><strong>LCD Display 16x2:</strong> Interface pengguna dan status informasi</li>
-                    <li><strong>Servo Motor:</strong> Aktuator untuk mekanisme kunci</li>
-                    <li><strong>Buzzer:</strong> Feedback audio untuk status sistem</li>
-                    <li><strong>LED Indicators:</strong> Status visual (hijau/merah)</li>
+                    <li data-lang="microcontroller"><strong>Arduino Uno/ESP32:</strong> Microcontroller utama untuk mengontrol sistem</li>
+                    <li data-lang="rfid-reader"><strong>RFID Reader (RC522):</strong> Pembaca kartu RFID untuk identifikasi user</li>
+                    <li data-lang="keypad"><strong>Keypad 4x4:</strong> Input PIN dan navigasi menu</li>
+                    <li data-lang="lcd-display"><strong>LCD Display 16x2:</strong> Interface pengguna dan status informasi</li>
+                    <li data-lang="servo-motor"><strong>Servo Motor:</strong> Aktuator untuk mekanisme kunci</li>
+                    <li data-lang="buzzer"><strong>Buzzer:</strong> Feedback audio untuk status sistem</li>
+                    <li data-lang="led-indicators"><strong>LED Indicators:</strong> Status visual (hijau/merah)</li>
                 </ul>
 
-                <h3>Alur Kerja Sistem</h3>
+                <h3 data-lang="workflow">Alur Kerja Sistem</h3>
                 <ul>
-                    <li>User mendekatkan RFID card ke reader</li>
-                    <li>Sistem memverifikasi card yang terdaftar</li>
-                    <li>Jika valid, user diminta memasukkan PIN</li>
-                    <li>Setelah autentikasi sukses, servo membuka kunci</li>
-                    <li>LCD menampilkan "Access Granted" dan timer countdown</li>
-                    <li>Sistem otomatis mengunci setelah timeout atau user konfirmasi</li>
+                    <li data-lang="workflow1">User mendekatkan RFID card ke reader</li>
+                    <li data-lang="workflow2">Sistem memverifikasi card yang terdaftar</li>
+                    <li data-lang="workflow3">Jika valid, user diminta memasukkan PIN</li>
+                    <li data-lang="workflow4">Setelah autentikasi sukses, servo membuka kunci</li>
+                    <li data-lang="workflow5">LCD menampilkan "Access Granted" dan timer countdown</li>
+                    <li data-lang="workflow6">Sistem otomatis mengunci setelah timeout atau user konfirmasi</li>
                 </ul>
 
-                <h3>Mode Operasi</h3>
+                <h3 data-lang="operation-modes">Mode Operasi</h3>
                 <ul>
-                    <li><strong>User Mode:</strong> Akses normal dengan RFID + PIN</li>
-                    <li><strong>Admin Mode:</strong> Registrasi user baru dan konfigurasi sistem</li>
-                    <li><strong>Emergency Mode:</strong> Override access dengan master PIN</li>
-                    <li><strong>Maintenance Mode:</strong> Testing komponen dan kalibrasi</li>
+                    <li data-lang="user-mode"><strong>User Mode:</strong> Akses normal dengan RFID + PIN</li>
+                    <li data-lang="admin-mode"><strong>Admin Mode:</strong> Registrasi user baru dan konfigurasi sistem</li>
+                    <li data-lang="emergency-mode"><strong>Emergency Mode:</strong> Override access dengan master PIN</li>
+                    <li data-lang="maintenance-mode"><strong>Maintenance Mode:</strong> Testing komponen dan kalibrasi</li>
                 </ul>
 
-                <h3>Keunggulan Sistem</h3>
-                <p>Smart Locker ini memberikan solusi keamanan yang praktis dengan tingkat keamanan tinggi. Kombinasi RFID dan PIN memastikan hanya user yang berwenang yang dapat mengakses locker. Sistem logging memberikan audit trail yang berguna untuk keamanan dan manajemen. Design modular memungkinkan skalabilitas untuk multiple locker dalam satu jaringan.</p>
+                <h3 data-lang="system-advantages">Keunggulan Sistem</h3>
+                <p data-lang="advantages-desc">Smart Locker ini memberikan solusi keamanan yang praktis dengan tingkat keamanan tinggi. Kombinasi RFID dan PIN memastikan hanya user yang berwenang yang dapat mengakses locker. Sistem logging memberikan audit trail yang berguna untuk keamanan dan manajemen. Design modular memungkinkan skalabilitas untuk multiple locker dalam satu jaringan.</p>
                 
                 <div class="project-links">
-                    <p><strong>Status:</strong> Prototype telah berhasil diuji dan siap untuk implementasi.</p>
+                    <p><strong data-lang="status">Status</strong>: <span data-lang="status-prototype">Prototype telah berhasil diuji dan siap untuk implementasi.</span></p>
                 </div>
             </div>
         </div>
@@ -82,11 +82,112 @@
     </footer>
 
     <script>
+        // Language translations for smart locker project
+        const translations = {
+            id: {
+                'back-to-projects': 'Kembali ke Proyek',
+                'category': 'Kategori',
+                'year': 'Tahun',
+                'about-project': 'Tentang Proyek Ini',
+                'security-features': 'Fitur Keamanan',
+                'system-components': 'Komponen Sistem',
+                'workflow': 'Alur Kerja Sistem',
+                'operation-modes': 'Mode Operasi',
+                'system-advantages': 'Keunggulan Sistem',
+                'status': 'Status',
+                'smart-locker-desc': 'Smart Locker adalah sistem keamanan modern yang menggabungkan teknologi RFID dan PIN untuk memberikan akses yang aman dan fleksibel. Sistem ini dirancang untuk aplikasi perkantoran, sekolah, gym, atau area publik yang membutuhkan penyimpanan personal yang aman.',
+                'dual-auth': 'Dual Authentication: Kombinasi RFID card dan PIN untuk keamanan berlapis',
+                'user-reg': 'User Registration: Sistem pendaftaran pengguna baru dengan admin access',
+                'access-log': 'Access Logging: Pencatatan setiap aktivitas buka/tutup locker',
+                'emergency': 'Emergency Override: Master key untuk akses darurat',
+                'auto-lock': 'Auto-lock Timer: Otomatis mengunci setelah periode tertentu',
+                'microcontroller': 'Arduino Uno/ESP32: Microcontroller utama untuk mengontrol sistem',
+                'rfid-reader': 'RFID Reader (RC522): Pembaca kartu RFID untuk identifikasi user',
+                'keypad': 'Keypad 4x4: Input PIN dan navigasi menu',
+                'lcd-display': 'LCD Display 16x2: Interface pengguna dan status informasi',
+                'servo-motor': 'Servo Motor: Aktuator untuk mekanisme kunci',
+                'buzzer': 'Buzzer: Feedback audio untuk status sistem',
+                'led-indicators': 'LED Indicators: Status visual (hijau/merah)',
+                'workflow1': 'User mendekatkan RFID card ke reader',
+                'workflow2': 'Sistem memverifikasi card yang terdaftar',
+                'workflow3': 'Jika valid, user diminta memasukkan PIN',
+                'workflow4': 'Setelah autentikasi sukses, servo membuka kunci',
+                'workflow5': 'LCD menampilkan "Access Granted" dan timer countdown',
+                'workflow6': 'Sistem otomatis mengunci setelah timeout atau user konfirmasi',
+                'user-mode': 'User Mode: Akses normal dengan RFID + PIN',
+                'admin-mode': 'Admin Mode: Registrasi user baru dan konfigurasi sistem',
+                'emergency-mode': 'Emergency Mode: Override access dengan master PIN',
+                'maintenance-mode': 'Maintenance Mode: Testing komponen dan kalibrasi',
+                'advantages-desc': 'Smart Locker ini memberikan solusi keamanan yang praktis dengan tingkat keamanan tinggi. Kombinasi RFID dan PIN memastikan hanya user yang berwenang yang dapat mengakses locker. Sistem logging memberikan audit trail yang berguna untuk keamanan dan manajemen. Design modular memungkinkan skalabilitas untuk multiple locker dalam satu jaringan.',
+                'status-prototype': 'Prototype telah berhasil diuji dan siap untuk implementasi.'
+            },
+            en: {
+                'back-to-projects': 'Back to Projects',
+                'category': 'Category',
+                'year': 'Year',
+                'about-project': 'About This Project',
+                'security-features': 'Security Features',
+                'system-components': 'System Components',
+                'workflow': 'System Workflow',
+                'operation-modes': 'Operation Modes',
+                'system-advantages': 'System Advantages',
+                'status': 'Status',
+                'smart-locker-desc': 'Smart Locker is a modern security system that combines RFID and PIN technology to provide secure and flexible access. This system is designed for office, school, gym, or public area applications that require secure personal storage.',
+                'dual-auth': 'Dual Authentication: Combination of RFID card and PIN for layered security',
+                'user-reg': 'User Registration: New user registration system with admin access',
+                'access-log': 'Access Logging: Recording of every locker open/close activity',
+                'emergency': 'Emergency Override: Master key for emergency access',
+                'auto-lock': 'Auto-lock Timer: Automatically locks after a certain period',
+                'microcontroller': 'Arduino Uno/ESP32: Main microcontroller to control the system',
+                'rfid-reader': 'RFID Reader (RC522): RFID card reader for user identification',
+                'keypad': 'Keypad 4x4: PIN input and menu navigation',
+                'lcd-display': 'LCD Display 16x2: User interface and status information',
+                'servo-motor': 'Servo Motor: Actuator for lock mechanism',
+                'buzzer': 'Buzzer: Audio feedback for system status',
+                'led-indicators': 'LED Indicators: Visual status (green/red)',
+                'workflow1': 'User brings RFID card close to reader',
+                'workflow2': 'System verifies registered card',
+                'workflow3': 'If valid, user is prompted to enter PIN',
+                'workflow4': 'After successful authentication, servo opens lock',
+                'workflow5': 'LCD displays "Access Granted" and timer countdown',
+                'workflow6': 'System automatically locks after timeout or user confirmation',
+                'user-mode': 'User Mode: Normal access with RFID + PIN',
+                'admin-mode': 'Admin Mode: New user registration and system configuration',
+                'emergency-mode': 'Emergency Mode: Override access with master PIN',
+                'maintenance-mode': 'Maintenance Mode: Component testing and calibration',
+                'advantages-desc': 'This Smart Locker provides a practical security solution with high security level. The combination of RFID and PIN ensures only authorized users can access the locker. The logging system provides a useful audit trail for security and management. Modular design allows scalability for multiple lockers in one network.',
+                'status-prototype': 'Prototype has been successfully tested and ready for implementation.'
+            }
+        };
+
+        // Function to get language from URL parameter
+        function getLanguageFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('lang') || 'id';
+        }
+
+        // Function to apply language
+        function applyLanguage(lang) {
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                const key = element.getAttribute('data-lang');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+
         // Apply saved theme preference
         const savedTheme = localStorage.getItem('theme') || 'dark';
         if (savedTheme === 'light') {
             document.body.classList.add('light-mode');
         }
+
+        // Apply language from URL or localStorage
+        const urlLang = getLanguageFromURL();
+        const savedLang = localStorage.getItem('language') || 'id';
+        const currentLang = urlLang !== 'id' ? urlLang : savedLang;
+        
+        applyLanguage(currentLang);
     </script>
 </body>
 </html>

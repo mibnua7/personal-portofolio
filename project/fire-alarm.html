@@ -7,38 +7,38 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-<body class="project-detail-bg">
-    <header class="mini-header">
-        <div class="container">
-            <a href="../index.html#work" class="back-link"><i class="fas fa-arrow-left"></i> Kembali ke Proyek</a>
-        </div>
-    </header>
+<body class="project-detail">
+
 
     <section id="project-detail">
         <div class="container">
+            <div class="back-to-projects">
+                <a href="../index.html#work" class="back-button"><i class="fas fa-arrow-left"></i> <span data-lang="back-to-projects">Kembali ke Proyek</span></a>
+            </div>
+            
             <h1 class="project-title">Fire Alarm</h1>
-            <p class="project-meta">Kategori: IoT / Microcontroller | Tahun: 2024 | Platform: Arduino IDE</p>
+            <p class="project-meta"><span data-lang="category">Kategori</span>: IoT / Microcontroller | <span data-lang="year">Tahun</span>: 2024 | Platform: Arduino IDE</p>
             
             <div class="detail-image-gallery">
                 <img src="../images/project1.jpeg" alt="Fire Alarm - Gambar Utama" class="main-detail-image">
             </div>
 
             <div class="project-description-content">
-                <h3>Tentang Proyek Ini</h3>
-                <p>Proyek "Fire Alarm" adalah sistem deteksi api berbasis mikrokontroler yang dirancang untuk memberikan peringatan dini terhadap potensi kebakaran. Alat ini memantau perubahan suhu dan konsentrasi gas di lingkungan sekitar.</p>
-                <p>Tujuannya adalah untuk meningkatkan keamanan di area tertentu (misalnya rumah, kantor kecil, atau gudang) dengan menyediakan sistem alarm yang responsif dan terjangkau. Proyek ini mengatasi kebutuhan akan sistem keamanan kebakaran dasar yang efektif dan mudah diimplementasikan.</p>
+                <h3 data-lang="about-project">Tentang Proyek Ini</h3>
+                <p data-lang="fire-alarm-desc1">Proyek "Fire Alarm" adalah sistem deteksi api berbasis mikrokontroler yang dirancang untuk memberikan peringatan dini terhadap potensi kebakaran. Alat ini memantau perubahan suhu dan konsentrasi gas di lingkungan sekitar.</p>
+                <p data-lang="fire-alarm-desc2">Tujuannya adalah untuk meningkatkan keamanan di area tertentu (misalnya rumah, kantor kecil, atau gudang) dengan menyediakan sistem alarm yang responsif dan terjangkau. Proyek ini mengatasi kebutuhan akan sistem keamanan kebakaran dasar yang efektif dan mudah diimplementasikan.</p>
 
-                <h3>Proses dan Metodologi</h3>
+                <h3 data-lang="process-methodology">Proses dan Metodologi</h3>
                 <ul>
-                    <li>**Riset Komponen:** Menentukan sensor yang tepat (MQ-2 untuk gas, DHT11 untuk suhu), mikrokontroler (ESP32/Arduino), dan modul alarm (buzzer, LED).</li>
-                    <li>**Perancangan Skema:** Membuat desain sirkuit di EasyEda, termasuk koneksi sensor, modul Wi-Fi (jika ada notifikasi IoT), dan aktuator.</li>
-                    <li>**Pemrograman Mikrokontroler:** Mengembangkan kode di Arduino IDE untuk membaca data sensor, memicu alarm jika ambang batas terlampaui, dan mengirim notifikasi (opsional, via IoT platform seperti Blynk/Thingspeak).</li>
-                    <li>**3D Design (Opsional):** Merancang casing atau enclosure alat menggunakan SketchUp atau Blender untuk tampilan yang lebih rapi.</li>
-                    <li>**Perakitan & Pengujian:** Merakit semua komponen dan melakukan pengujian fungsional untuk memastikan akurasi deteksi dan respons alarm.</li>
+                    <li data-lang="process1">**Riset Komponen:** Menentukan sensor yang tepat (MQ-2 untuk gas, DHT11 untuk suhu), mikrokontroler (ESP32/Arduino), dan modul alarm (buzzer, LED).</li>
+                    <li data-lang="process2">**Perancangan Skema:** Membuat desain sirkuit di EasyEda, termasuk koneksi sensor, modul Wi-Fi (jika ada notifikasi IoT), dan aktuator.</li>
+                    <li data-lang="process3">**Pemrograman Mikrokontroler:** Mengembangkan kode di Arduino IDE untuk membaca data sensor, memicu alarm jika ambang batas terlampaui, dan mengirim notifikasi (opsional, via IoT platform seperti Blynk/Thingspeak).</li>
+                    <li data-lang="process4">**3D Design (Opsional):** Merancang casing atau enclosure alat menggunakan SketchUp atau Blender untuk tampilan yang lebih rapi.</li>
+                    <li data-lang="process5">**Perakitan & Pengujian:** Merakit semua komponen dan melakukan pengujian fungsional untuk memastikan akurasi deteksi dan respons alarm.</li>
                 </ul>
 
-                <h3>Hasil dan Dampak</h3>
-                <p>Sistem "Fire Alarm" ini berhasil mendeteksi kenaikan suhu drastis dan keberadaan gas berbahaya dengan cepat. Alarm visual dan audio akan aktif, memberikan waktu yang lebih cepat untuk tindakan pencegahan. Potensi dampak positifnya adalah mengurangi risiko kerusakan properti dan melindungi nyawa melalui peringatan dini.</p>
+                <h3 data-lang="results-impact">Hasil</h3>
+                <p data-lang="fire-alarm-results">Sistem "Fire Alarm" ini berhasil mendeteksi kenaikan suhu drastis dan keberadaan gas berbahaya dengan cepat. Alarm visual dan audio akan aktif, memberikan waktu yang lebih cepat untuk tindakan pencegahan. Potensi dampak positifnya adalah mengurangi risiko kerusakan properti dan melindungi nyawa melalui peringatan dini.</p>
                 
                 <p class="project-links">
                     </p>
@@ -53,11 +53,70 @@
     </footer>
 
     <script>
+        // Language translations for project pages
+        const translations = {
+            id: {
+                'back-to-projects': 'Kembali ke Proyek',
+                'category': 'Kategori',
+                'year': 'Tahun',
+                'about-project': 'Tentang Proyek Ini',
+                'process-methodology': 'Proses dan Metodologi',
+                'results-impact': 'Hasil',
+                'fire-alarm-desc1': 'Proyek "Fire Alarm" adalah sistem deteksi api berbasis mikrokontroler yang dirancang untuk memberikan peringatan dini terhadap potensi kebakaran. Alat ini memantau perubahan suhu dan konsentrasi gas di lingkungan sekitar.',
+                'fire-alarm-desc2': 'Tujuannya adalah untuk meningkatkan keamanan di area tertentu (misalnya rumah, kantor kecil, atau gudang) dengan menyediakan sistem alarm yang responsif dan terjangkau. Proyek ini mengatasi kebutuhan akan sistem keamanan kebakaran dasar yang efektif dan mudah diimplementasikan.',
+                'fire-alarm-results': 'Sistem "Fire Alarm" ini berhasil mendeteksi kenaikan suhu drastis dan keberadaan gas berbahaya dengan cepat. Alarm visual dan audio akan aktif, memberikan waktu yang lebih cepat untuk tindakan pencegahan. Potensi dampak positifnya adalah mengurangi risiko kerusakan properti dan melindungi nyawa melalui peringatan dini.',
+                'process1': '**Riset Komponen:** Menentukan sensor yang tepat (MQ-2 untuk gas, DHT11 untuk suhu), mikrokontroler (ESP32/Arduino), dan modul alarm (buzzer, LED).',
+                'process2': '**Perancangan Skema:** Membuat desain sirkuit di EasyEda, termasuk koneksi sensor, modul Wi-Fi (jika ada notifikasi IoT), dan aktuator.',
+                'process3': '**Pemrograman Mikrokontroler:** Mengembangkan kode di Arduino IDE untuk membaca data sensor, memicu alarm jika ambang batas terlampaui, dan mengirim notifikasi (opsional, via IoT platform seperti Blynk/Thingspeak).',
+                'process4': '**3D Design (Opsional):** Merancang casing atau enclosure alat menggunakan SketchUp atau Blender untuk tampilan yang lebih rapi.',
+                'process5': '**Perakitan & Pengujian:** Merakit semua komponen dan melakukan pengujian fungsional untuk memastikan akurasi deteksi dan respons alarm.'
+            },
+            en: {
+                'back-to-projects': 'Back to Projects',
+                'category': 'Category',
+                'year': 'Year',
+                'about-project': 'About This Project',
+                'process-methodology': 'Process and Methodology',
+                'results-impact': 'Results',
+                'fire-alarm-desc1': 'The "Fire Alarm" project is a microcontroller-based fire detection system designed to provide early warning against potential fires. This device monitors temperature changes and gas concentration in the surrounding environment.',
+                'fire-alarm-desc2': 'The goal is to improve security in certain areas (such as homes, small offices, or warehouses) by providing a responsive and affordable alarm system. This project addresses the need for an effective and easily implementable basic fire safety system.',
+                'fire-alarm-results': 'This "Fire Alarm" system successfully detects drastic temperature increases and the presence of dangerous gases quickly. Visual and audio alarms will activate, providing faster time for preventive action. The potential positive impact is reducing property damage risks and protecting lives through early warning.',
+                'process1': '**Component Research:** Determining the right sensors (MQ-2 for gas, DHT11 for temperature), microcontroller (ESP32/Arduino), and alarm modules (buzzer, LED).',
+                'process2': '**Schematic Design:** Creating circuit design in EasyEDA, including sensor connections, Wi-Fi modules (for IoT notifications), and actuators.',
+                'process3': '**Microcontroller Programming:** Developing code in Arduino IDE to read sensor data, trigger alarms when thresholds are exceeded, and send notifications (optional, via IoT platforms like Blynk/Thingspeak).',
+                'process4': '**3D Design (Optional):** Designing casing or enclosure using SketchUp or Blender for a neater appearance.',
+                'process5': '**Assembly & Testing:** Assembling all components and conducting functional testing to ensure detection accuracy and alarm response.'
+            }
+        };
+
+        // Function to get language from URL parameter
+        function getLanguageFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('lang') || 'id';
+        }
+
+        // Function to apply language
+        function applyLanguage(lang) {
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                const key = element.getAttribute('data-lang');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+
         // Apply saved theme preference
         const savedTheme = localStorage.getItem('theme') || 'dark';
         if (savedTheme === 'light') {
             document.body.classList.add('light-mode');
         }
+
+        // Apply language from URL or localStorage
+        const urlLang = getLanguageFromURL();
+        const savedLang = localStorage.getItem('language') || 'id';
+        const currentLang = urlLang !== 'id' ? urlLang : savedLang;
+        
+        applyLanguage(currentLang);
     </script>
 </body>
 </html>

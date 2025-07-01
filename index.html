@@ -16,10 +16,16 @@
                     <img src="images/logo-porto.jpeg" alt="Ibnu Abas Logo" class="logo-img">
                 </a>
                 <ul>
-                    <li><a href="#hero" class="nav-link" data-section="hero">Beranda</a></li>
-                    <li><a href="#work" class="nav-link" data-section="work">Proyek</a></li>
-                    <li><a href="#about" class="nav-link" data-section="about">Tentang</a></li>
-                    <li><a href="#contact" class="nav-link" data-section="contact">Kontak</a></li>
+                    <li><a href="#hero" class="nav-link" data-section="hero" data-lang="nav-home">Beranda</a></li>
+                    <li><a href="#work" class="nav-link" data-section="work" data-lang="nav-projects">Proyek</a></li>
+                    <li><a href="#about" class="nav-link" data-section="about" data-lang="nav-about">Tentang</a></li>
+                    <li><a href="#contact" class="nav-link" data-section="contact" data-lang="nav-contact">Kontak</a></li>
+                    <li>
+                        <button id="language-toggle" class="language-toggle" aria-label="Toggle language">
+                            <i class="fas fa-globe"></i>
+                            <span id="lang-text">EN</span>
+                        </button>
+                    </li>
                     <li>
                         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
                             <i class="fas fa-moon"></i>
@@ -44,7 +50,7 @@
         <div class="container section-content-container">
             <div class="section-title">
                 <i class="fas fa-briefcase"></i>
-                <h2>Proyek Saya</h2>
+                <h2 data-lang="section-projects">Proyek Saya</h2>
             </div>
             <div class="project-grid">
                 <div class="project-item project-1">
@@ -53,7 +59,7 @@
                         <div class="project-info">
                             <h4>Fire Alarm</h4>
                             <p class="category">IoT / Microcontroller</p>
-                            <p class="description">Mengembangkan sistem deteksi kebakaran berbasis sensor suhu dan gas dengan mikrokontroler.</p>
+                            <p class="description" data-lang="project1-desc">Mengembangkan sistem deteksi kebakaran berbasis sensor suhu dan gas dengan mikrokontroler.</p>
                         </div>
                     </a>
                 </div>
@@ -64,7 +70,7 @@
                         <div class="project-info">
                             <h4>Smart Farm</h4>
                             <p class="category">IoT / Microcontroller</p>
-                            <p class="description">Merancang sistem monitoring kelembapan tanah dan suhu otomatis untuk pertanian pintar.</p>
+                            <p class="description" data-lang="project2-desc">Merancang sistem monitoring kelembapan tanah dan suhu otomatis untuk pertanian pintar.</p>
                         </div>
                     </a>
                 </div>
@@ -73,9 +79,9 @@
                     <a href="project/monitoring-app.html">
                         <img src="images/project3.jpeg" alt="App Pemantau Suhu dan Kelembapan">
                         <div class="project-info">
-                            <h4>App Pemantau Suhu dan Kelembapan</h4>
+                            <h4 data-lang="project3-title">App Pemantau Suhu dan Kelembapan</h4>
                             <p class="category">Mobile App</p>
-                            <p class="description">Mengembangkan aplikasi mobile monitoring suhu dan kelembapan menggunakan MIT App Inventor dengan integrasi API.</p>
+                            <p class="description" data-lang="project3-desc">Mengembangkan aplikasi mobile monitoring suhu dan kelembapan menggunakan MIT App Inventor dengan integrasi API.</p>
                         </div>
                     </a>
                 </div>
@@ -86,7 +92,7 @@
                         <div class="project-info">
                             <h4>Smart Locker</h4>
                             <p class="category">IoT / Microcontroller</p>
-                            <p class="description">Merancang sistem keamanan locker pintar dengan fitur autentikasi PIN dan teknologi RFID.</p>
+                            <p class="description" data-lang="project4-desc">Merancang sistem keamanan locker pintar dengan fitur autentikasi PIN dan teknologi RFID.</p>
                         </div>
                     </a>
                 </div>
@@ -98,11 +104,11 @@
         <div class="container section-content-container">
             <div class="section-title">
                 <i class="fas fa-user"></i>
-                <h2>Tentang Saya</h2>
+                <h2 data-lang="section-about">Tentang Saya</h2>
             </div>
             <div class="about-content">
-                <p>Saya adalah mahasiswa Teknik Elektro semester 6 dengan konsentrasi Elektronika Kendali. Memiliki passion dalam pengembangan teknologi IoT dan berpengalaman dalam merancang sistem elektronik berbasis mikrokontroler ESP32 dan Arduino, serta kompeten dalam Research and Development, perancangan Schematic, dan 3D Design.</p>
-                <p><strong>Keahlian Teknis:</strong> Arduino IDE, EasyEDA, SketchUp, Eagle Autodesk, Blender, Microsoft Office Suite, dan berbagai tools pengembangan IoT.</p>
+                <p data-lang="about-desc1">Saya adalah mahasiswa Teknik Elektro semester 6 dengan konsentrasi Elektronika Kendali. Memiliki passion dalam pengembangan teknologi IoT dan berpengalaman dalam merancang sistem elektronik berbasis mikrokontroler ESP32 dan Arduino, serta kompeten dalam Research and Development, perancangan Schematic, dan 3D Design.</p>
+                <p><strong data-lang="about-skills">Keahlian Teknis:</strong> Arduino IDE, EasyEDA, SketchUp, Eagle Autodesk, Blender, Microsoft Office.</p>
             </div>
         </div>
     </section>
@@ -111,10 +117,10 @@
         <div class="container section-content-container">
             <div class="section-title">
                 <i class="fas fa-envelope"></i>
-                <h2>Kontak</h2>
+                <h2 data-lang="section-contact">Kontak</h2>
             </div>
             <div class="contact-info">
-                <p>Saya terbuka untuk peluang kolaborasi profesional dan diskusi mengenai proyek-proyek inovatif. Silakan hubungi saya melalui kontak di bawah ini.</p>
+                <p data-lang="contact-desc">Saya terbuka untuk peluang kolaborasi profesional dan diskusi mengenai proyek-proyek inovatif. Silakan hubungi saya melalui kontak di bawah ini.</p>
                 <div class="contact-methods">
                     <a href="mailto:ibnu55675@gmail.com" target="_blank" aria-label="Email Muhammad Ibnu Abas" class="contact-item">
                         <i class="fas fa-envelope"></i>
@@ -140,32 +146,152 @@
     </footer>
 
     <script>
+        // Language translations
+        const translations = {
+            id: {
+                'nav-home': 'Beranda',
+                'nav-projects': 'Proyek',
+                'nav-about': 'Tentang',
+                'nav-contact': 'Kontak',
+                'section-projects': 'Proyek Saya',
+                'section-about': 'Tentang Saya',
+                'section-contact': 'Kontak',
+                'project1-desc': 'Mengembangkan sistem deteksi kebakaran berbasis sensor suhu dan gas dengan mikrokontroler.',
+                'project2-desc': 'Merancang sistem monitoring kelembapan tanah dan suhu otomatis untuk pertanian pintar.',
+                'project3-title': 'App Pemantau Suhu dan Kelembapan',
+                'project3-desc': 'Mengembangkan aplikasi mobile monitoring suhu dan kelembapan menggunakan MIT App Inventor dengan integrasi API.',
+                'project4-desc': 'Merancang sistem keamanan locker pintar dengan fitur autentikasi PIN dan teknologi RFID.',
+                'about-desc1': 'Saya adalah mahasiswa Teknik Elektro semester 6 dengan konsentrasi Elektronika Kendali. Memiliki passion dalam pengembangan teknologi IoT dan berpengalaman dalam merancang sistem elektronik berbasis mikrokontroler ESP32 dan Arduino, serta kompeten dalam Research and Development, perancangan Schematic, dan 3D Design.',
+                'about-skills': 'Keahlian Teknis:',
+                'contact-desc': 'Saya terbuka untuk peluang kolaborasi profesional dan diskusi mengenai proyek-proyek inovatif. Silakan hubungi saya melalui kontak di bawah ini.'
+            },
+            en: {
+                'nav-home': 'Home',
+                'nav-projects': 'Projects',
+                'nav-about': 'About',
+                'nav-contact': 'Contact',
+                'section-projects': 'My Projects',
+                'section-about': 'About Me',
+                'section-contact': 'Contact',
+                'project1-desc': 'Developing a fire detection system based on temperature and gas sensors with microcontroller.',
+                'project2-desc': 'Designing an automatic soil moisture and temperature monitoring system for smart farming.',
+                'project3-title': 'Temperature & Humidity Monitoring App',
+                'project3-desc': 'Developing a mobile application for temperature and humidity monitoring using MIT App Inventor with API integration.',
+                'project4-desc': 'Designing a smart locker security system with PIN authentication and RFID technology features.',
+                'about-desc1': 'I am a 6th semester Electrical Engineering student with a concentration in Control Electronics. I have a passion for IoT technology development and experience in designing electronic systems based on ESP32 and Arduino microcontrollers, as well as competence in Research and Development, Schematic design, and 3D Design.',
+                'about-skills': 'Technical Skills:',
+                'contact-desc': 'I am open to professional collaboration opportunities and discussions about innovative projects. Please contact me through the contacts below.'
+            }
+        };
+
+        // Language toggle functionality
+        const languageToggle = document.getElementById('language-toggle');
+        const langText = document.getElementById('lang-text');
+
+        // Function to get system language
+        function getSystemLanguage() {
+            const browserLang = navigator.language || navigator.userLanguage;
+            return browserLang.startsWith('id') ? 'id' : 'en';
+        }
+
+        // Function to apply language
+        function applyLanguage(lang) {
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                const key = element.getAttribute('data-lang');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update language toggle text
+            langText.textContent = lang === 'id' ? 'EN' : 'ID';
+            
+            // Update project links based on language
+            updateProjectLinks(lang);
+        }
+
+        // Function to update project links
+        function updateProjectLinks(lang) {
+            const projectLinks = document.querySelectorAll('.project-item a');
+            projectLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (lang === 'en') {
+                    // Add language parameter for English
+                    if (!href.includes('?lang=en')) {
+                        link.setAttribute('href', href + '?lang=en');
+                    }
+                } else {
+                    // Remove language parameter for Indonesian (default)
+                    link.setAttribute('href', href.replace('?lang=en', ''));
+                }
+            });
+        }
+
+        // Check for saved language preference or default to system language
+        const savedLanguage = localStorage.getItem('language');
+        const currentLanguage = savedLanguage || getSystemLanguage();
+        
+        applyLanguage(currentLanguage);
+
+        languageToggle.addEventListener('click', () => {
+            const currentLang = langText.textContent === 'EN' ? 'id' : 'en';
+            const newLang = currentLang === 'id' ? 'en' : 'id';
+            
+            applyLanguage(newLang);
+            localStorage.setItem('language', newLang);
+        });
+
+        // ...existing code...
         // Theme toggle functionality
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
         const icon = themeToggle.querySelector('i');
 
-        // Check for saved theme preference or default to 'dark' theme
-        const currentTheme = localStorage.getItem('theme') || 'dark';
+        // Function to detect system theme preference
+        function getSystemTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return 'dark';
+            }
+            return 'light';
+        }
+
+        // Function to apply theme
+        function applyTheme(theme) {
+            if (theme === 'light') {
+                body.classList.add('light-mode');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                body.classList.remove('light-mode');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+
+        // Check for saved theme preference or default to system preference
+        const savedTheme = localStorage.getItem('theme');
+        const currentTheme = savedTheme || getSystemTheme();
         
-        if (currentTheme === 'light') {
-            body.classList.add('light-mode');
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
+        applyTheme(currentTheme);
+
+        // Listen for system theme changes
+        if (window.matchMedia) {
+            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            mediaQuery.addEventListener('change', (e) => {
+                // Only follow system changes if user hasn't manually set a preference
+                if (!localStorage.getItem('theme')) {
+                    const newTheme = e.matches ? 'dark' : 'light';
+                    applyTheme(newTheme);
+                }
+            });
         }
 
         themeToggle.addEventListener('click', () => {
-            body.classList.toggle('light-mode');
+            const isLightMode = body.classList.contains('light-mode');
+            const newTheme = isLightMode ? 'dark' : 'light';
             
-            if (body.classList.contains('light-mode')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-                localStorage.setItem('theme', 'light');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-                localStorage.setItem('theme', 'dark');
-            }
+            applyTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
         });
 
         // Navigation slider functionality

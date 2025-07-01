@@ -7,45 +7,45 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-<body class="project-detail-bg">
-    <header class="mini-header">
-        <div class="container">
-            <a href="../index.html#work" class="back-link"><i class="fas fa-arrow-left"></i> Kembali ke Proyek</a>
-        </div>
-    </header>
+<body class="project-detail">
+
 
     <section id="project-detail">
         <div class="container">
+            <div class="back-to-projects">
+                <a href="../index.html#work" class="back-button"><i class="fas fa-arrow-left"></i> <span data-lang="back-to-projects">Kembali ke Proyek</span></a>
+            </div>
+            
             <h1 class="project-title">Smart Farm</h1>
-            <p class="project-meta">Kategori: IoT / Microcontroller | Tahun: 2024 | Platform: Arduino IDE</p>
+            <p class="project-meta"><span data-lang="category">Kategori</span>: IoT / Microcontroller | <span data-lang="year">Tahun</span>: 2024 | Platform: Arduino IDE</p>
             
             <div class="detail-image-gallery">
                 <img src="../images/project2.jpeg" alt="Smart Farm - Gambar Utama" class="main-detail-image">
             </div>
 
             <div class="project-description-content">
-                <h3>Tentang Proyek Ini</h3>
-                <p>Proyek "Smart Farm" adalah sistem pemantauan dan otomasi pertanian berbasis IoT yang dirancang untuk mengoptimalkan kondisi pertumbuhan tanaman melalui monitoring kelembapan tanah dan suhu lingkungan secara real-time.</p>
+                <h3 data-lang="about-project">Tentang Proyek Ini</h3>
+                <p data-lang="smart-farm-desc">Proyek "Smart Farm" adalah sistem pemantauan dan otomasi pertanian berbasis IoT yang dirancang untuk mengoptimalkan kondisi pertumbuhan tanaman melalui monitoring kelembapan tanah dan suhu lingkungan secara real-time.</p>
                 
-                <h3>Fitur Utama</h3>
+                <h3 data-lang="main-features">Fitur Utama</h3>
                 <ul>
-                    <li>Sensor kelembapan tanah untuk monitoring kondisi media tanam</li>
-                    <li>Sensor suhu dan kelembapan udara (DHT22)</li>
-                    <li>Sistem penyiraman otomatis berdasarkan kondisi tanah</li>
-                    <li>Notifikasi IoT melalui aplikasi mobile</li>
-                    <li>Data logging untuk analisis pertumbuhan</li>
+                    <li data-lang="feature1">Sensor kelembapan tanah untuk monitoring kondisi media tanam</li>
+                    <li data-lang="feature2">Sensor suhu dan kelembapan udara (DHT22)</li>
+                    <li data-lang="feature3">Sistem penyiraman otomatis berdasarkan kondisi tanah</li>
+                    <li data-lang="feature4">Notifikasi IoT melalui aplikasi mobile</li>
+                    <li data-lang="feature5">Data logging untuk analisis pertumbuhan</li>
                 </ul>
 
-                <h3>Teknologi yang Digunakan</h3>
+                <h3 data-lang="tech-used">Teknologi yang Digunakan</h3>
                 <ul>
-                    <li>ESP32 sebagai mikrokontroler utama</li>
-                    <li>Sensor kelembapan tanah kapasitif</li>
-                    <li>Sensor DHT22 untuk suhu dan kelembapan</li>
-                    <li>Relay module untuk kontrol pompa air</li>
-                    <li>Platform IoT Blynk untuk monitoring</li>
+                    <li>ESP32 <span data-lang="as-main-controller">sebagai mikrokontroler utama</span></li>
+                    <li data-lang="soil-sensor">Sensor kelembapan tanah kapasitif</li>
+                    <li>Sensor DHT22 <span data-lang="for-temp-humidity">untuk suhu dan kelembapan</span></li>
+                    <li>Relay module <span data-lang="for-pump-control">untuk kontrol pompa air</span></li>
+                    <li>Platform IoT Blynk <span data-lang="for-monitoring">untuk monitoring</span></li>
                 </ul>
 
-                <p><strong>Status:</strong> Halaman detail sedang dalam pengembangan.</p>
+                <p><strong data-lang="status">Status</strong>: <span data-lang="status-desc">Halaman detail sedang dalam pengembangan.</span></p>
             </div>
         </div>
     </section>
@@ -57,11 +57,80 @@
     </footer>
 
     <script>
+        // Language translations for smart farm project
+        const translations = {
+            id: {
+                'back-to-projects': 'Kembali ke Proyek',
+                'category': 'Kategori',
+                'year': 'Tahun',
+                'about-project': 'Tentang Proyek Ini',
+                'main-features': 'Fitur Utama',
+                'tech-used': 'Teknologi yang Digunakan',
+                'status': 'Status',
+                'smart-farm-desc': 'Proyek "Smart Farm" adalah sistem pemantauan dan otomasi pertanian berbasis IoT yang dirancang untuk mengoptimalkan kondisi pertumbuhan tanaman melalui monitoring kelembapan tanah dan suhu lingkungan secara real-time.',
+                'feature1': 'Sensor kelembapan tanah untuk monitoring kondisi media tanam',
+                'feature2': 'Sensor suhu dan kelembapan udara (DHT22)',
+                'feature3': 'Sistem penyiraman otomatis berdasarkan kondisi tanah',
+                'feature4': 'Notifikasi IoT melalui aplikasi mobile',
+                'feature5': 'Data logging untuk analisis pertumbuhan',
+                'as-main-controller': 'sebagai mikrokontroler utama',
+                'soil-sensor': 'Sensor kelembapan tanah kapasitif',
+                'for-temp-humidity': 'untuk suhu dan kelembapan',
+                'for-pump-control': 'untuk kontrol pompa air',
+                'for-monitoring': 'untuk monitoring',
+                'status-desc': 'Halaman detail sedang dalam pengembangan.'
+            },
+            en: {
+                'back-to-projects': 'Back to Projects',
+                'category': 'Category',
+                'year': 'Year',
+                'about-project': 'About This Project',
+                'main-features': 'Main Features',
+                'tech-used': 'Technologies Used',
+                'status': 'Status',
+                'smart-farm-desc': 'The "Smart Farm" project is an IoT-based agricultural monitoring and automation system designed to optimize plant growth conditions through real-time monitoring of soil moisture and environmental temperature.',
+                'feature1': 'Soil moisture sensor for monitoring growing media conditions',
+                'feature2': 'Temperature and humidity sensor (DHT22)',
+                'feature3': 'Automatic irrigation system based on soil conditions',
+                'feature4': 'IoT notifications through mobile application',
+                'feature5': 'Data logging for growth analysis',
+                'as-main-controller': 'as main microcontroller',
+                'soil-sensor': 'Capacitive soil moisture sensor',
+                'for-temp-humidity': 'for temperature and humidity',
+                'for-pump-control': 'for water pump control',
+                'for-monitoring': 'for monitoring',
+                'status-desc': 'Detail page is under development.'
+            }
+        };
+
+        // Function to get language from URL parameter
+        function getLanguageFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('lang') || 'id';
+        }
+
+        // Function to apply language
+        function applyLanguage(lang) {
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                const key = element.getAttribute('data-lang');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+
         // Apply saved theme preference
         const savedTheme = localStorage.getItem('theme') || 'dark';
         if (savedTheme === 'light') {
             document.body.classList.add('light-mode');
         }
+
+        // Apply language from URL or localStorage
+        const urlLang = getLanguageFromURL();
+        const savedLang = localStorage.getItem('language') || 'id';
+        const currentLang = urlLang !== 'id' ? urlLang : savedLang;
+        
+        applyLanguage(currentLang);
     </script>
 </body>
 </html>
