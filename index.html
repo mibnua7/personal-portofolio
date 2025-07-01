@@ -20,6 +20,11 @@
                     <li><a href="#work">Proyek</a></li>
                     <li><a href="#about">Tentang</a></li>
                     <li><a href="#contact">Kontak</a></li>
+                    <li>
+                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -134,5 +139,35 @@
             <p>&copy; 2025 Muhammad Ibnu Abas. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        // Check for saved theme preference or default to 'dark' theme
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        
+        if (currentTheme === 'light') {
+            body.classList.add('light-mode');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
 </body>
 </html>

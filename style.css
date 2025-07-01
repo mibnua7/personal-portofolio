@@ -10,10 +10,11 @@ body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
-    background: url('images/background-main.jpg') no-repeat center center fixed;
+    background: url('images/background-maindark.jpg') no-repeat center center fixed;
     background-size: cover;
     color: var(--light-grey);
     line-height: 1.6;
+    transition: all 0.3s ease;
 }
 
 .container {
@@ -59,10 +60,13 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
+    align-items: center;
 }
 
 nav ul li {
     margin-left: 30px;
+    display: flex;
+    align-items: center;
 }
 
 nav ul li a {
@@ -87,6 +91,37 @@ nav ul li a::after {
 nav ul li a:hover::after, nav ul li a:focus::after {
     width: 100%;
     left: 0;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: none;
+    border: 2px solid var(--primary-color);
+    color: var(--light-grey);
+    padding: 8px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.theme-toggle:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.theme-toggle i {
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover i {
+    transform: rotate(180deg);
 }
 
 /* Hero Section */
@@ -271,6 +306,187 @@ footer {
     padding: 20px 0;
     margin-top: 40px;
     font-size: 0.9em;
+}
+
+/* Light Mode Styles */
+body.light-mode {
+    background: url('images/background-mainwhite.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #2c3e50;
+}
+
+body.light-mode header {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #2c3e50;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode nav ul li a {
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+body.light-mode .theme-toggle {
+    color: #2c3e50;
+    border-color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+body.light-mode .theme-toggle:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+body.light-mode .project-item {
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(231, 76, 60, 0.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .project-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(231, 76, 60, 0.3);
+    border-color: var(--primary-color);
+}
+
+body.light-mode .project-info h4 {
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+body.light-mode .project-info .category {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+body.light-mode .project-info .description {
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+body.light-mode .section-title h2 {
+    color: #2c3e50;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .section-title i {
+    color: var(--primary-color);
+}
+
+body.light-mode .hero-content h1 {
+    color: #2c3e50;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .hero-content p {
+    color: #34495e;
+    font-weight: 600;
+}
+
+body.light-mode .section-content-container {
+    background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(231, 76, 60, 0.1);
+}
+
+body.light-mode .about-content p {
+    color: #2c3e50;
+    font-weight: 500;
+    margin: 15px 0;
+}
+
+body.light-mode .contact-info p {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+body.light-mode .contact-item {
+    color: #2c3e50;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(231, 76, 60, 0.2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+}
+
+body.light-mode .contact-item:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(231, 76, 60, 0.4);
+    border-color: var(--primary-color);
+}
+
+body.light-mode footer {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #2c3e50;
+    font-weight: 600;
+    box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Light Mode for Project Detail Pages */
+body.light-mode.project-detail-bg {
+    background: url('../images/background-mainwhite.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+body.light-mode .mini-header {
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+body.light-mode .back-link {
+    color: var(--secondary-color);
+}
+
+body.light-mode .back-link {
+    color: #2c3e50;
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .back-link:hover {
+    color: white;
+    background-color: var(--primary-color);
+    transform: translateX(-5px);
+}
+
+body.light-mode .project-title {
+    color: #2c3e50;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .project-meta {
+    color: #34495e;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+body.light-mode .project-description-content h3 {
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+body.light-mode .project-description-content p,
+body.light-mode .project-description-content li {
+    color: #2c3e50;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 12px;
+    border-radius: 8px;
+    margin: 8px 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .main-detail-image {
+    border: 2px solid rgba(52, 73, 94, 0.1);
 }
 
 /* Responsive Design */
