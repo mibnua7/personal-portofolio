@@ -1714,3 +1714,8 @@ body.light-mode footer p {
     color: #2c3e50;
     font-weight: 600;
 }
+
+/* Exception: Keep spacing for contact item icons */
+    .contact-item i {
+        margin-right: 10px !important;
+    }
