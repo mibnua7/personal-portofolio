@@ -5,12 +5,73 @@
     padding: 0;
 }
 
-/* Prevent horizontal overflow */
-html, body {
-    overflow-x: hidden;
-    max-width: 100vw;
-    margin: 0;
-    padding: 0;
+/* Desktop-specific overflow behavior */
+@media (min-width: 769px) {
+    html {
+        overflow-x: hidden;
+        overflow-y: auto;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer 10+ */
+    }
+    
+    html::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
+        width: 0;
+        background: transparent;
+    }
+    
+    body {
+        overflow-x: hidden;
+        overflow-y: auto;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        padding-top: 60px;
+        height: auto;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer 10+ */
+    }
+    
+    body::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
+        width: 0;
+        background: transparent;
+    }
+}
+
+/* Hide scrollbars globally on desktop while maintaining scroll functionality */
+@media (min-width: 769px) {
+    * {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer 10+ */
+    }
+    
+    *::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
+        width: 0;
+        background: transparent;
+    }
+    
+    /* Ensure container elements don't show scrollbars */
+    .container,
+    .section-content-container,
+    section,
+    main {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    .container::-webkit-scrollbar,
+    .section-content-container::-webkit-scrollbar,
+    section::-webkit-scrollbar,
+    main::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        background: transparent;
+    }
 }
 
 /* General Styling */
@@ -22,7 +83,9 @@ html, body {
 }
 
 html {
-    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth; /* Enable smooth scrolling */
 }
 
 body {
@@ -35,8 +98,6 @@ body {
     color: var(--light-grey);
     line-height: 1.6;
     transition: all 0.3s ease;
-    overflow-x: hidden;
-    max-width: 100vw;
     box-sizing: border-box;
     width: 100%;
     position: relative;
@@ -48,7 +109,6 @@ body {
     padding: 0 20px;
     width: 100%;
     box-sizing: border-box;
-    overflow-x: hidden;
 }
 
 a {
@@ -64,8 +124,6 @@ a:hover {
 /* Prevent text and content overflow */
 section {
     width: 100%;
-    max-width: 100vw;
-    overflow-x: hidden;
     box-sizing: border-box;
 }
 
@@ -92,24 +150,21 @@ header {
     left: 0;
     right: 0;
     z-index: 1000;
-    transition: transform 0.3s ease, opacity 0.3s ease, backdrop-filter 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    min-height: 52px; /* Ensure minimum height */
+    min-height: 52px;
     width: 100%;
-    max-width: 100vw;
-    overflow-x: hidden;
     box-sizing: border-box;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
-header.hidden {
-    transform: translateY(-100%) !important;
-    opacity: 0 !important;
-}
-
-header.visible {
-    transform: translateY(0) !important;
-    opacity: 1 !important;
+header::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
 }
 
 nav {
@@ -117,9 +172,16 @@ nav {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
     box-sizing: border-box;
+    overflow-x: hidden !important;
+    overflow-y: visible !important; /* Allow slider to show */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+nav::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
 }
 
 /* Desktop layout - horizontal header */
@@ -171,6 +233,15 @@ nav ul {
     display: flex;
     align-items: center;
     position: relative;
+    overflow: hidden !important; /* Completely prevent scroll */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+nav ul::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
 }
 
 nav ul li {
@@ -184,28 +255,40 @@ nav ul li a {
     font-weight: 600;
     font-size: 0.85em;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     transition: color 0.3s ease;
     padding: 6px 10px;
     border-radius: 6px;
+    text-decoration: none;
 }
 
-/* Navigation Slider */
+/* Hover effect only - no underline */
+nav ul li a:hover {
+    background-color: rgba(231, 76, 60, 0.15);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Active state - just color change */
+nav ul li a.active {
+    color: var(--primary-color);
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+@keyframes slideIn {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+    to {
+        width: 100%;
+        opacity: 1;
+    }
+}
+
+/* Navigation Slider - REMOVED per user request */
 .nav-slider {
-    position: absolute;
-    bottom: -3px;
-    height: 2px;
-    background: linear-gradient(90deg, var(--primary-color), #ff6b6b);
-    border-radius: 1px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0;
-    transform: translateX(0);
-    width: 0;
-    box-shadow: 0 1px 6px rgba(231, 76, 60, 0.3);
-}
-
-.nav-slider.active {
-    opacity: 1;
+    display: none !important; /* Completely hide slider */
 }
 
 /* Theme Toggle Button */
@@ -281,6 +364,7 @@ nav ul li a {
     justify-content: center;
     text-align: center;
     padding: 40px 0;
+    margin-bottom: 40px;
 }
 
 .hero-container {
@@ -304,23 +388,26 @@ nav ul li a {
 
 /* Main Sections Spacing */
 #work, #about, #contact {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 10px 0; /* Padding untuk spacing antar section */
+    margin: 10px 0 10px 0; /* Tambah margin bawah lebih besar untuk spacing */
+    background-color: transparent; /* Background dipindah ke container */
 }
 
-/* The Main Box Style for All Sections */
+/* The Main Box Style for All Sections - kotak container */
 .section-content-container {
-    background-color: rgba(52, 73, 94, 0.85);
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: rgba(52, 73, 94, 0.85); /* Background kotak */
+    padding: 50px 40px; /* Padding dalam kotak */
+    margin: 0 40px 40px 40px; /* Tambah margin bawah untuk spacing kotak */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Shadow untuk depth */
 }
 
 /* Section Title Styling */
 .section-title {
     text-align: center;
-    margin-bottom: 50px;
-    padding-top: 0; /* Padding is handled by the box */
+    margin-bottom: 40px; /* Tambah spacing bawah */
+    margin-top: 0; /* Reset top margin karena section sudah ada padding */
+    padding-top: 20px; /* Tambah padding atas untuk spacing dari tepi section */
 }
 
 .section-title h2 {
@@ -334,6 +421,30 @@ nav ul li a {
 .section-title i {
     font-size: 2em;
     color: var(--light-grey);
+}
+
+/* Mobile section titles spacing */
+@media (max-width: 768px) {
+    .section-title {
+        margin-bottom: 35px; /* Tambah spacing bawah untuk mobile */
+        margin-top: 0; /* Reset top margin */
+        padding-top: 15px; /* Padding atas untuk mobile */
+        padding: 0 10px;
+        padding-top: 15px; /* Override padding-top */
+    }
+    
+    .section-title i {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1.8em;
+    }
+    
+    .section-title h2 {
+        font-size: 2em;
+        margin-top: 8px;
+        margin-bottom: 0;
+        line-height: 1.2;
+    }
 }
 
 .detail-image-gallery {
@@ -351,6 +462,8 @@ nav ul li a {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
+    margin-top: 15px;
+    margin-bottom: 40px;
 }
 
 .project-item {
@@ -457,6 +570,7 @@ nav ul li a {
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.8s ease, transform 0.8s ease;
+    margin-top: 15px;
 }
 
 .about-content.revealed {
@@ -483,6 +597,7 @@ nav ul li a {
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.8s ease, transform 0.8s ease;
+    margin-top: 15px;
 }
 
 .contact-info.revealed {
@@ -589,16 +704,25 @@ body.light-mode .contact-item:hover span {
 
 /* Footer */
 footer {
-    background-color: rgba(52, 73, 94, 0.9);
-    color: var(--dark-grey);
+    background-color: rgba(52, 73, 94, 0.95);
+    color: var(--light-grey);
     text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
+    padding: 30px 0;
+    margin-top: 60px;
+    margin-bottom: 20px; /* Add bottom margin to ensure it's not cut off */
     font-size: 0.9em;
     width: 100%;
-    max-width: 100vw;
-    overflow-x: hidden;
     box-sizing: border-box;
+    border-top: 1px solid rgba(231, 76, 60, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+footer p {
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    opacity: 0.9;
 }
 
 /* Detail image gallery container */
@@ -729,6 +853,18 @@ body.light-mode nav ul li a {
     font-weight: 700;
 }
 
+/* Light mode hover and active states */
+body.light-mode nav ul li a:hover {
+    background-color: rgba(231, 76, 60, 0.15);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+body.light-mode nav ul li a.active {
+    color: var(--primary-color);
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
 body.light-mode .theme-toggle {
     color: #2c3e50;
     border-color: var(--primary-color);
@@ -805,9 +941,18 @@ body.light-mode .hero-content p {
     font-weight: 600;
 }
 
+/* Light mode - background untuk kotak container */
+body.light-mode #work,
+body.light-mode #about,
+body.light-mode #contact {
+    background-color: transparent; /* Background dipindah ke container */
+    box-shadow: none;
+    border: none;
+}
+
 body.light-mode .section-content-container {
-    background-color: rgba(255, 255, 255, 0.85);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 0.9); /* Background kotak light mode */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     border: 1px solid rgba(231, 76, 60, 0.1);
 }
 
@@ -881,7 +1026,7 @@ body.light-mode .back-button:hover {
     transition: all 0.3s ease;
     text-decoration: none;
     background-color: rgba(52, 73, 94, 0.8);
-    padding: 12px 20px;
+    padding: 12px 24px;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
@@ -889,7 +1034,7 @@ body.light-mode .back-button:hover {
 }
 
 .back-button i {
-    margin-right: 8px;
+    margin-right: 24px;
     font-size: 1.1em;
 }
 
@@ -898,6 +1043,27 @@ body.light-mode .back-button:hover {
     background-color: var(--primary-color);
     transform: translateX(-5px) translateY(-2px);
     box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+}
+
+/* Ensure proper centering for desktop */
+@media (min-width: 769px) {
+    .container {
+        padding: 0 20px;
+        margin: 0 auto;
+    }
+    
+    .section-content-container {
+        margin: 0 60px 50px 60px; /* Tambah margin bawah untuk desktop */
+        padding: 60px 50px; /* Padding lebih besar untuk desktop */
+        text-align: center;
+    }
+    
+    #contact .container,
+    #about .container,
+    #work .container {
+        padding: 20px 20px;
+        margin: 0 auto;
+    }
 }
 
 /* Force full width on mobile - prevent right spacing */
@@ -947,7 +1113,7 @@ body.light-mode .back-button:hover {
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 !important;
-        padding: 0 5px !important;
+        padding: 5px 5px !important;
     }
 }
 
@@ -1027,6 +1193,8 @@ body.light-mode .back-button:hover {
         margin: 0;
         padding: 0;
         justify-content: center;
+        overflow: hidden !important; /* Prevent scroll on mobile too */
+        white-space: nowrap; /* Prevent wrapping */
     }
     
     nav ul li {
@@ -1084,6 +1252,7 @@ body.light-mode .back-button:hover {
         width: 100%;
         max-width: 100%;
         overflow-x: hidden;
+        margin-bottom: 30px;
     }
     
     /* Ensure project items don't overflow */
@@ -1158,10 +1327,10 @@ body.light-mode .back-button:hover {
     
     /* Mobile sections */
     .section-content-container {
-        margin: 0;
-        padding: 20px 10px;
-        width: 100%;
-        max-width: 100%;
+        margin: 0 20px 35px 20px; /* Tambah margin bawah untuk mobile */
+        padding: 40px 25px; /* Padding sesuai mobile */
+        width: auto; /* Auto width dengan margin */
+        max-width: none;
         box-sizing: border-box;
         overflow-x: hidden;
     }
@@ -1169,11 +1338,49 @@ body.light-mode .back-button:hover {
     .contact-methods {
         flex-direction: column;
         gap: 15px;
+        margin-bottom: 30px;
     }
     
     .contact-item {
         justify-content: center;
         padding: 12px 20px;
+    }
+    
+    /* Add spacing between sections on mobile only */
+    section {
+        margin-bottom: 50px !important;
+    }
+
+    section:last-of-type {
+        margin-bottom: 0 !important;
+    }
+
+    /* Specific section spacing for mobile */
+    #hero {
+        margin-bottom: 40px !important;
+        padding-bottom: 30px !important;
+    }
+
+    #work {
+        margin-bottom: 60px !important;
+    }
+
+    #about {
+        margin-bottom: 60px !important;
+    }
+
+    #contact {
+        margin-bottom: 30px !important;
+    }
+
+    /* Mobile content spacing adjustments */
+    .about-content,
+    .contact-info {
+        margin-top: 10px !important;
+    }
+    
+    .project-grid {
+        margin-top: 10px !important;
     }
 }
 
@@ -1211,7 +1418,7 @@ body.light-mode .back-button:hover {
     
     .project-grid {
         margin: 0 !important;
-        padding: 0 5px !important;
+        padding: 10px 5px !important;
         width: 100% !important;
         max-width: 100% !important;
     }
@@ -1232,9 +1439,25 @@ body.light-mode .back-button:hover {
     
     footer {
         margin: 0 !important;
-        padding: 20px 0 !important;
+        padding: 20px 5px !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+        box-sizing: border-box !important;
+    }
+    
+    footer .container {
+        padding: 0 5px !important;
+        margin: 0 !important;
         width: 100% !important;
         max-width: 100% !important;
+    }
+    
+    footer p {
+        margin: 0 !important;
+        padding: 0 5px !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
     }
 }
 
@@ -1369,19 +1592,125 @@ body.light-mode .back-button:hover {
         font-size: 1.1em;
     }
     
+    /* Very small screens - footer */
+    footer {
+        padding: 15px 3px !important;
+        font-size: 0.8em !important;
+    }
+    
+    footer .container {
+        padding: 0 3px !important;
+    }
+    
+    footer p {
+        padding: 0 3px !important;
+        text-align: center !important;
+        line-height: 1.4 !important;
+    }
+
+    /* Very small screens - section titles */
+    .section-title {
+        margin-bottom: 25px;
+        margin-top: 25px; /* Keep consistent with margin approach */
+        padding: 0 5px;
+    }
+    
+    .section-title i {
+        margin-bottom: 10px;
+        font-size: 1.6em;
+    }
+    
+    .section-title h2 {
+        font-size: 1.8em;
+        margin-top: 10px;
+    }
+
     .hero-content h1 {
         font-size: 1.8rem;
     }
     
     .section-content-container {
-        margin: 0;
-        padding: 15px 5px;
-        width: 100%;
-        max-width: 100%;
+        margin: 0 15px 30px 15px; /* Tambah margin bawah untuk very small */
+        padding: 35px 20px; /* Padding sesuai very small screens */
+        width: auto;
+        max-width: none;
         box-sizing: border-box;
     }
 }
 
-body.light-mode .main-detail-image {
-    background-color: rgba(255, 255, 255, 0.8);
+/* Very small screens - contact methods spacing */
+    .contact-methods {
+        margin-bottom: 25px !important;
+        gap: 12px !important;
+    }
+
+/* Ensure bottom elements don't cause horizontal scroll on mobile */
+@media (max-width: 768px) {
+    #contact {
+        padding-right: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    #contact .container {
+        padding-bottom: 20px !important;
+        padding-right: 5px !important;
+        margin-right: 0 !important;
+    }
+
+    .contact-methods {
+        padding: 0 5px !important;
+        margin: 0 !important;
+        width: calc(100% - 10px) !important;
+    }
+
+    .contact-item {
+        margin: 0 !important;
+        padding: 12px 15px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+}
+
+/* Alternative approach: allow body to scroll to show footer on desktop */
+@media (min-width: 769px) {
+    body {
+        min-height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    
+    /* Make main content scrollable instead of body */
+    main {
+        min-height: calc(100vh - 60px); /* Use min-height instead of fixed height */
+        overflow-x: hidden;
+        scroll-behavior: smooth; /* Enable smooth scrolling */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    main::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        background: transparent;
+    }
+    
+    /* Ensure sections fit properly */
+    section {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* Light mode footer styles */
+body.light-mode footer {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #2c3e50;
+    border-top: 1px solid rgba(231, 76, 60, 0.2);
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode footer p {
+    color: #2c3e50;
+    font-weight: 600;
 }

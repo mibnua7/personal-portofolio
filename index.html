@@ -31,7 +31,6 @@
                         <li><a href="#work" class="nav-link" data-section="work" data-lang="nav-projects">Proyek</a></li>
                         <li><a href="#about" class="nav-link" data-section="about" data-lang="nav-about">Tentang</a></li>
                         <li><a href="#contact" class="nav-link" data-section="contact" data-lang="nav-contact">Kontak</a></li>
-                        <div class="nav-slider"></div>
                     </ul>
                 </div>
                 
@@ -49,6 +48,7 @@
         </div>
     </header>
 
+    <main>
     <section id="hero">
         <div class="container hero-container">
             <div class="hero-content">
@@ -150,6 +150,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <footer>
         <div class="container">
@@ -157,8 +158,78 @@
         </div>
     </footer>
 
+    <!-- ENHANCED NAVIGATION SCRIPT -->
     <script>
-        // Language translations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get scroll container (use window for body scroll) and navigation elements
+            const navLinks = document.querySelectorAll('.nav-link');
+            const header = document.querySelector('header');
+            
+            if (!navLinks.length) {
+                console.error('No navigation links found');
+                return;
+            }
+            
+            // Setup navigation click handlers
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const sectionId = this.getAttribute('data-section');
+                    const targetSection = document.getElementById(sectionId);
+                    
+                    if (targetSection) {
+                        // Calculate position relative to document, accounting for header
+                        const targetY = targetSection.offsetTop - 80; // Account for header height
+                        
+                        // Scroll window with smooth behavior
+                        window.scrollTo({
+                            top: targetY,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update active state
+                        navLinks.forEach(nl => nl.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
+            });
+            
+            // Setup header auto-hide on scroll
+            let lastScrollTop = 0;
+            const hideThreshold = 80; // Pixels to scroll before hiding header
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (header) {
+                    if (scrollTop > lastScrollTop && scrollTop > hideThreshold) {
+                        // Scrolling down - hide header
+                        header.style.transform = 'translateY(-100%)';
+                        header.style.opacity = '0.95';
+                    } else {
+                        // Scrolling up or at top - show header
+                        header.style.transform = 'translateY(0)';
+                        header.style.opacity = '1';
+                    }
+                }
+                
+                lastScrollTop = scrollTop;
+            });
+            
+            // Set first link as active by default
+            if (navLinks.length > 0) {
+                navLinks[0].classList.add('active');
+            }
+            
+            // Debug log for verification
+            console.log('Navigation initialized successfully');
+            console.log('Navigation links:', navLinks.length);
+        });
+    </script>
+
+    <script>
+        // ========== BASIC LANGUAGE & THEME (Working) ==========
         const translations = {
             id: {
                 'nav-home': 'Beranda',
@@ -196,17 +267,13 @@
             }
         };
 
-        // Language toggle functionality
+        // Language system
         const languageToggle = document.getElementById('language-toggle');
         const langText = document.getElementById('lang-text');
-
-        // Function to get system language
         function getSystemLanguage() {
             const browserLang = navigator.language || navigator.userLanguage;
             return browserLang.startsWith('id') ? 'id' : 'en';
         }
-
-        // Function to apply language
         function applyLanguage(lang) {
             document.querySelectorAll('[data-lang]').forEach(element => {
                 const key = element.getAttribute('data-lang');
@@ -214,60 +281,28 @@
                     element.textContent = translations[lang][key];
                 }
             });
-            
-            // Update language toggle text
             langText.textContent = lang === 'id' ? 'EN' : 'ID';
-            
-            // Update project links based on language
-            updateProjectLinks(lang);
         }
-
-        // Function to update project links
-        function updateProjectLinks(lang) {
-            const projectLinks = document.querySelectorAll('.project-item a');
-            projectLinks.forEach(link => {
-                const href = link.getAttribute('href');
-                if (lang === 'en') {
-                    // Add language parameter for English
-                    if (!href.includes('?lang=en')) {
-                        link.setAttribute('href', href + '?lang=en');
-                    }
-                } else {
-                    // Remove language parameter for Indonesian (default)
-                    link.setAttribute('href', href.replace('?lang=en', ''));
-                }
-            });
-        }
-
-        // Check for saved language preference or default to system language
         const savedLanguage = localStorage.getItem('language');
         const currentLanguage = savedLanguage || getSystemLanguage();
-        
         applyLanguage(currentLanguage);
-
         languageToggle.addEventListener('click', () => {
             const currentLang = langText.textContent === 'EN' ? 'id' : 'en';
             const newLang = currentLang === 'id' ? 'en' : 'id';
-            
             applyLanguage(newLang);
             localStorage.setItem('language', newLang);
         });
 
-        // ...existing code...
-        // Theme toggle functionality
+        // Theme system
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
         const icon = themeToggle.querySelector('i');
-
-        // Function to detect system theme preference
         function getSystemTheme() {
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
                 return 'dark';
             }
             return 'light';
         }
-
-        // Function to apply theme
         function applyTheme(theme) {
             if (theme === 'light') {
                 body.classList.add('light-mode');
@@ -279,197 +314,66 @@
                 icon.classList.add('fa-moon');
             }
         }
-
-        // Check for saved theme preference or default to system preference
         const savedTheme = localStorage.getItem('theme');
         const currentTheme = savedTheme || getSystemTheme();
-        
         applyTheme(currentTheme);
-
-        // Listen for system theme changes
-        if (window.matchMedia) {
-            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-            mediaQuery.addEventListener('change', (e) => {
-                // Only follow system changes if user hasn't manually set a preference
-                if (!localStorage.getItem('theme')) {
-                    const newTheme = e.matches ? 'dark' : 'light';
-                    applyTheme(newTheme);
-                }
-            });
-        }
-
         themeToggle.addEventListener('click', () => {
             const isLightMode = body.classList.contains('light-mode');
             const newTheme = isLightMode ? 'dark' : 'light';
-            
             applyTheme(newTheme);
             localStorage.setItem('theme', newTheme);
         });
+    </script>
 
-        // Navigation slider functionality
-        const navLinks = document.querySelectorAll('.nav-link');
-        const navSlider = document.querySelector('.nav-slider');
-        const sections = document.querySelectorAll('section[id]');
-        const header = document.querySelector('header');
-
-        // Auto-hide header functionality
-        let lastScrollTop = 0;
-        let isScrolling = false;
-
-        function handleScroll() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                // Scrolling down & past threshold
-                header.classList.add('hidden');
-                header.classList.remove('visible');
-            } else if (scrollTop < lastScrollTop || scrollTop <= 50) {
-                // Scrolling up or near top
-                header.classList.remove('hidden');
-                header.classList.add('visible');
-            }
-            
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-        }
-
-        function updateSlider(activeLink) {
-            // Disable slider on mobile devices for better performance and UX
-            if (!activeLink || window.innerWidth <= 768) {
-                navSlider.style.opacity = '0';
-                navSlider.style.width = '0';
-                return;
-            }
-
-            // Wait for layout to settle
-            setTimeout(() => {
-                const linkRect = activeLink.getBoundingClientRect();
-                const navRect = activeLink.closest('ul').getBoundingClientRect();
-                
-                const leftOffset = linkRect.left - navRect.left;
-                const width = linkRect.width;
-
-                navSlider.style.opacity = '1';
-                navSlider.style.width = `${width}px`;
-                navSlider.style.transform = `translateX(${leftOffset}px)`;
-                navSlider.classList.add('active');
-            }, 100);
-        }
-
-        // Scroll spy functionality
-        function scrollSpy() {
-            // Dynamic offset based on screen size
-            const offset = window.innerWidth <= 768 ? 120 : 100;
-            const scrollPos = window.scrollY + offset;
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-                const sectionId = section.getAttribute('id');
-
-                if (scrollPos >= sectionTop && scrollPos <= sectionTop + sectionHeight) {
-                    // Remove active class from all links
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    
-                    // Add active class to current section link
-                    const activeLink = document.querySelector(`.nav-link[data-section="${sectionId}"]`);
-                    if (activeLink) {
-                        activeLink.classList.add('active');
-                        updateSlider(activeLink);
-                    }
-                }
-            });
-        }
-
-        // Click handler for nav links
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                // Remove active from all links
-                navLinks.forEach(l => l.classList.remove('active'));
-                
-                // Add active to clicked link
-                link.classList.add('active');
-                updateSlider(link);
-                
-                // Smooth scroll to section
-                const targetId = link.getAttribute('data-section');
-                const targetSection = document.getElementById(targetId);
-                
-                if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-
-            // Hover effects
-            link.addEventListener('mouseenter', () => {
-                if (!link.classList.contains('active')) {
-                    updateSlider(link);
-                }
-            });
-        });
-
-        // Mouse leave nav to return to active section
-        const navUl = document.querySelector('nav ul');
-        navUl.addEventListener('mouseleave', () => {
-            const activeLink = document.querySelector('.nav-link.active');
-            updateSlider(activeLink);
-        });
-
+    <!-- HEADER AUTO-HIDE ONLY -->
+    <script>
         // Initialize on page load
-        window.addEventListener('load', () => {
-            scrollSpy();
+        window.addEventListener('load', function() {
+            console.log('Page loaded, setting up header auto-hide...');
             
-            // Set initial active state for hero section
-            const heroLink = document.querySelector('.nav-link[data-section="hero"]');
-            if (heroLink && !document.querySelector('.nav-link.active')) {
-                heroLink.classList.add('active');
-                updateSlider(heroLink);
+            // Header auto-hide
+            const header = document.querySelector('header');
+            if (header) {
+                let lastScroll = 0;
+                window.addEventListener('scroll', function() {
+                    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    if (currentScroll > 100) {
+                        if (currentScroll > lastScroll) {
+                            header.style.transform = 'translateY(-100%)';
+                        } else {
+                            header.style.transform = 'translateY(0)';
+                        }
+                    } else {
+                        header.style.transform = 'translateY(0)';
+                    }
+                    lastScroll = currentScroll;
+                });
+                console.log('Header auto-hide setup complete');
+            }
+            
+            // Set home as active initially
+            setTimeout(() => {
+                const homeLink = document.querySelector('[data-section="hero"]');
+                if (homeLink) {
+                    homeLink.classList.add('active');
+                    console.log('Home link set as active');
+                }
+            }, 100);
+            
+            // Test navigation function
+            if (typeof window.scrollToSection === 'function') {
+                console.log('Navigation function is ready!');
+            } else {
+                console.error('Navigation function not found!');
             }
         });
+    </script>
 
-        // Listen for scroll events
-        window.addEventListener('scroll', () => {
-            handleScroll();
-            scrollSpy();
-        });
-        
-        // Debounced resize handler for better performance
-        let resizeTimeout;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                const activeLink = document.querySelector('.nav-link.active');
-                updateSlider(activeLink);
-            }, 250);
-        });
-
-        // Touch event optimization for mobile
-        let touchStartY = 0;
-        window.addEventListener('touchstart', (e) => {
-            touchStartY = e.touches[0].clientY;
-        }, { passive: true });
-
-        window.addEventListener('touchend', (e) => {
-            const touchEndY = e.changedTouches[0].clientY;
-            const touchDiff = touchStartY - touchEndY;
-            
-            // Only update slider if significant scroll occurred
-            if (Math.abs(touchDiff) > 50) {
-                setTimeout(() => {
-                    scrollSpy();
-                }, 100);
-            }
-        }, { passive: true });
-
-        // Scroll Reveal Animation for Project Items (Repeatable)
+    <!-- ANIMATIONS SCRIPT -->
+    <script>
         function initScrollReveal() {
             const projectItems = document.querySelectorAll('.project-item');
-            
-            // Set initial animation states based on index
             projectItems.forEach((item, index) => {
                 if (index % 2 === 0) {
                     item.classList.add('reveal-left');
@@ -478,26 +382,19 @@
                 }
             });
             
-            // Create intersection observer for project items
-            const observerOptions = {
-                threshold: 0.15,
-                rootMargin: '0px 0px -100px 0px'
-            };
-            
+            const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -100px 0px' };
             const projectObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     const item = entry.target;
                     const index = Array.from(projectItems).indexOf(item);
                     
                     if (entry.isIntersecting) {
-                        // Item entering viewport - show animation
                         const delay = index * 150;
                         setTimeout(() => {
                             item.classList.add('revealed');
                             item.classList.remove('reveal-left', 'reveal-right');
                         }, delay);
                     } else {
-                        // Item leaving viewport - reset for next time
                         item.classList.remove('revealed');
                         if (index % 2 === 0) {
                             item.classList.add('reveal-left');
@@ -508,112 +405,70 @@
                 });
             }, observerOptions);
             
-            // Start observing all project items
-            projectItems.forEach(item => {
-                projectObserver.observe(item);
-            });
+            projectItems.forEach(item => projectObserver.observe(item));
         }
 
-        // Scroll Reveal Animation for About Section
         function initAboutAnimation() {
             const aboutContent = document.querySelector('.about-content');
             const aboutParagraphs = document.querySelectorAll('.about-content p');
-            
             if (!aboutContent) return;
-            
-            const aboutObserverOptions = {
-                threshold: 0.2,
-                rootMargin: '0px 0px -50px 0px'
-            };
             
             const aboutObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        // Animate about content container first
                         entry.target.classList.add('revealed');
-                        
-                        // Then animate paragraphs with staggered delay
                         aboutParagraphs.forEach((paragraph, index) => {
-                            setTimeout(() => {
-                                paragraph.classList.add('revealed');
-                            }, 300 + (index * 200));
+                            setTimeout(() => paragraph.classList.add('revealed'), 300 + (index * 200));
                         });
                     } else {
-                        // Reset animation when leaving viewport
                         entry.target.classList.remove('revealed');
-                        aboutParagraphs.forEach(paragraph => {
-                            paragraph.classList.remove('revealed');
-                        });
+                        aboutParagraphs.forEach(paragraph => paragraph.classList.remove('revealed'));
                     }
                 });
-            }, aboutObserverOptions);
+            }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
             
             aboutObserver.observe(aboutContent);
         }
         
-        // Scroll Reveal Animation for Contact Section
         function initContactAnimation() {
             const contactInfo = document.querySelector('.contact-info');
             const contactParagraph = document.querySelector('.contact-info p');
             const contactMethods = document.querySelector('.contact-methods');
             const contactItems = document.querySelectorAll('.contact-item');
-            
             if (!contactInfo) return;
-            
-            const contactObserverOptions = {
-                threshold: 0.2,
-                rootMargin: '0px 0px -50px 0px'
-            };
             
             const contactObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        // Animate contact info container first
                         entry.target.classList.add('revealed');
-                        
-                        // Then animate paragraph
-                        setTimeout(() => {
-                            if (contactParagraph) contactParagraph.classList.add('revealed');
-                        }, 300);
-                        
-                        // Then animate contact methods container
-                        setTimeout(() => {
-                            if (contactMethods) contactMethods.classList.add('revealed');
-                        }, 600);
-                        
-                        // Finally animate contact items with staggered delay
+                        setTimeout(() => { if (contactParagraph) contactParagraph.classList.add('revealed'); }, 300);
+                        setTimeout(() => { if (contactMethods) contactMethods.classList.add('revealed'); }, 600);
                         contactItems.forEach((item, index) => {
-                            setTimeout(() => {
-                                item.classList.add('revealed');
-                            }, 900 + (index * 150));
+                            setTimeout(() => item.classList.add('revealed'), 900 + (index * 150));
                         });
                     } else {
-                        // Reset animation when leaving viewport
                         entry.target.classList.remove('revealed');
                         if (contactParagraph) contactParagraph.classList.remove('revealed');
                         if (contactMethods) contactMethods.classList.remove('revealed');
-                        contactItems.forEach(item => {
-                            item.classList.remove('revealed');
-                        });
+                        contactItems.forEach(item => item.classList.remove('revealed'));
                     }
                 });
-            }, contactObserverOptions);
+            }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
             
             contactObserver.observe(contactInfo);
         }
-
-        // Initialize scroll reveal after DOM content is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            initScrollReveal();
-            initAboutAnimation();
-            initContactAnimation();
-        });
         
-        // Also initialize on window load for safety
-        window.addEventListener('load', () => {
-            initScrollReveal();
-            initAboutAnimation();
-            initContactAnimation();
+        // Initialize animations when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                try {
+                    initScrollReveal();
+                    initAboutAnimation();
+                    initContactAnimation();
+                } catch (error) {
+                    console.error('Animation error:', error);
+                }
+            }, 200);
         });
     </script>
 </body>
