@@ -12,27 +12,39 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">
+                <!-- Logo for desktop (hidden on mobile) -->
+                <a href="#" class="logo logo-desktop">
                     <img src="images/logo-porto.jpeg" alt="Ibnu Abas Logo" class="logo-img">
                 </a>
-                <ul>
-                    <li><a href="#hero" class="nav-link" data-section="hero" data-lang="nav-home">Beranda</a></li>
-                    <li><a href="#work" class="nav-link" data-section="work" data-lang="nav-projects">Proyek</a></li>
-                    <li><a href="#about" class="nav-link" data-section="about" data-lang="nav-about">Tentang</a></li>
-                    <li><a href="#contact" class="nav-link" data-section="contact" data-lang="nav-contact">Kontak</a></li>
-                    <li>
-                        <button id="language-toggle" class="language-toggle" aria-label="Toggle language">
-                            <i class="fas fa-globe"></i>
-                            <span id="lang-text">EN</span>
-                        </button>
-                    </li>
-                    <li>
-                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-                            <i class="fas fa-moon"></i>
-                        </button>
-                    </li>
-                    <div class="nav-slider"></div>
-                </ul>
+                
+                <!-- Logo row for mobile only -->
+                <div class="nav-logo-row">
+                    <a href="#" class="logo logo-mobile">
+                        <img src="images/logo-porto.jpeg" alt="Ibnu Abas Logo" class="logo-img">
+                    </a>
+                </div>
+                
+                <!-- Navigation row -->
+                <div class="nav-main-row">
+                    <ul>
+                        <li><a href="#hero" class="nav-link" data-section="hero" data-lang="nav-home">Beranda</a></li>
+                        <li><a href="#work" class="nav-link" data-section="work" data-lang="nav-projects">Proyek</a></li>
+                        <li><a href="#about" class="nav-link" data-section="about" data-lang="nav-about">Tentang</a></li>
+                        <li><a href="#contact" class="nav-link" data-section="contact" data-lang="nav-contact">Kontak</a></li>
+                        <div class="nav-slider"></div>
+                    </ul>
+                </div>
+                
+                <!-- Controls row -->
+                <div class="nav-controls-row">
+                    <button id="language-toggle" class="language-toggle" aria-label="Toggle language">
+                        <i class="fas fa-globe"></i>
+                        <span id="lang-text">EN</span>
+                    </button>
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
             </nav>
         </div>
     </header>
@@ -452,6 +464,157 @@
                 }, 100);
             }
         }, { passive: true });
+
+        // Scroll Reveal Animation for Project Items (Repeatable)
+        function initScrollReveal() {
+            const projectItems = document.querySelectorAll('.project-item');
+            
+            // Set initial animation states based on index
+            projectItems.forEach((item, index) => {
+                if (index % 2 === 0) {
+                    item.classList.add('reveal-left');
+                } else {
+                    item.classList.add('reveal-right');
+                }
+            });
+            
+            // Create intersection observer for project items
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const projectObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    const item = entry.target;
+                    const index = Array.from(projectItems).indexOf(item);
+                    
+                    if (entry.isIntersecting) {
+                        // Item entering viewport - show animation
+                        const delay = index * 150;
+                        setTimeout(() => {
+                            item.classList.add('revealed');
+                            item.classList.remove('reveal-left', 'reveal-right');
+                        }, delay);
+                    } else {
+                        // Item leaving viewport - reset for next time
+                        item.classList.remove('revealed');
+                        if (index % 2 === 0) {
+                            item.classList.add('reveal-left');
+                        } else {
+                            item.classList.add('reveal-right');
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            // Start observing all project items
+            projectItems.forEach(item => {
+                projectObserver.observe(item);
+            });
+        }
+
+        // Scroll Reveal Animation for About Section
+        function initAboutAnimation() {
+            const aboutContent = document.querySelector('.about-content');
+            const aboutParagraphs = document.querySelectorAll('.about-content p');
+            
+            if (!aboutContent) return;
+            
+            const aboutObserverOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const aboutObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        // Animate about content container first
+                        entry.target.classList.add('revealed');
+                        
+                        // Then animate paragraphs with staggered delay
+                        aboutParagraphs.forEach((paragraph, index) => {
+                            setTimeout(() => {
+                                paragraph.classList.add('revealed');
+                            }, 300 + (index * 200));
+                        });
+                    } else {
+                        // Reset animation when leaving viewport
+                        entry.target.classList.remove('revealed');
+                        aboutParagraphs.forEach(paragraph => {
+                            paragraph.classList.remove('revealed');
+                        });
+                    }
+                });
+            }, aboutObserverOptions);
+            
+            aboutObserver.observe(aboutContent);
+        }
+        
+        // Scroll Reveal Animation for Contact Section
+        function initContactAnimation() {
+            const contactInfo = document.querySelector('.contact-info');
+            const contactParagraph = document.querySelector('.contact-info p');
+            const contactMethods = document.querySelector('.contact-methods');
+            const contactItems = document.querySelectorAll('.contact-item');
+            
+            if (!contactInfo) return;
+            
+            const contactObserverOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const contactObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        // Animate contact info container first
+                        entry.target.classList.add('revealed');
+                        
+                        // Then animate paragraph
+                        setTimeout(() => {
+                            if (contactParagraph) contactParagraph.classList.add('revealed');
+                        }, 300);
+                        
+                        // Then animate contact methods container
+                        setTimeout(() => {
+                            if (contactMethods) contactMethods.classList.add('revealed');
+                        }, 600);
+                        
+                        // Finally animate contact items with staggered delay
+                        contactItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('revealed');
+                            }, 900 + (index * 150));
+                        });
+                    } else {
+                        // Reset animation when leaving viewport
+                        entry.target.classList.remove('revealed');
+                        if (contactParagraph) contactParagraph.classList.remove('revealed');
+                        if (contactMethods) contactMethods.classList.remove('revealed');
+                        contactItems.forEach(item => {
+                            item.classList.remove('revealed');
+                        });
+                    }
+                });
+            }, contactObserverOptions);
+            
+            contactObserver.observe(contactInfo);
+        }
+
+        // Initialize scroll reveal after DOM content is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            initScrollReveal();
+            initAboutAnimation();
+            initContactAnimation();
+        });
+        
+        // Also initialize on window load for safety
+        window.addEventListener('load', () => {
+            initScrollReveal();
+            initAboutAnimation();
+            initContactAnimation();
+        });
     </script>
 </body>
 </html>

@@ -67,6 +67,34 @@ nav {
     align-items: center;
 }
 
+/* Desktop layout - horizontal header */
+.logo-desktop {
+    display: flex; /* Show desktop logo */
+}
+
+.logo-mobile,
+.nav-logo-row {
+    display: none; /* Hide mobile logo on desktop */
+}
+
+.nav-main-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+}
+
+/* Add logo to main row for desktop */
+.nav-main-row::before {
+    display: none;
+}
+
+.nav-controls-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -265,22 +293,49 @@ nav ul li a {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.5s ease, box-shadow 0.3s ease, opacity 0.5s ease;
+    opacity: 0;
+    transform: translateX(-100px);
+}
+
+/* Animation states for scroll reveal */
+.project-item.reveal-left {
+    transform: translateX(-100px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.project-item.reveal-right {
+    transform: translateX(100px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.project-item.revealed {
+    transform: translateX(0) !important;
+    opacity: 1;
+    transition: transform 0.6s ease, opacity 0.6s ease, box-shadow 0.3s ease !important;
 }
 
 .project-item:hover {
-    transform: scale(1.03) translateY(-8px);
+    transform: scale(1.03) translateY(-8px) !important;
+    z-index: 10;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+.project-item.revealed:hover {
+    transform: scale(1.03) translateY(-8px) !important;
     z-index: 10;
     box-shadow: 0 15px 35px rgba(0,0,0,0.4);
 }
 
 /* Efek animasi membesar khusus project 1 */
 .project-1 {
-    transition: transform 0.35s cubic-bezier(0.4, 0.2, 0.2, 1), box-shadow 0.3s;
+    transition: transform 0.35s cubic-bezier(0.4, 0.2, 0.2, 1), box-shadow 0.3s, opacity 0.6s ease;
 }
 
 .project-1:hover {
-    transform: scale(1.03) translateY(-8px);
+    transform: scale(1.03) translateY(-8px) !important;
     z-index: 10;
     box-shadow: 0 15px 35px rgba(0,0,0,0.4);
 }
@@ -329,20 +384,53 @@ nav ul li a {
 /* About Section Content */
 .about-content {
     text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
+
+.about-content.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .about-content p {
     font-size: 1.1em;
     margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.about-content p.revealed {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Contact Section Content */
 .contact-info {
     text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.contact-info.revealed {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .contact-info p {
     font-size: 1.1em;
     margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.contact-info p.revealed {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .contact-methods {
@@ -350,6 +438,14 @@ nav ul li a {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.contact-methods.revealed {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .contact-item {
@@ -359,8 +455,15 @@ nav ul li a {
     border: 1px solid var(--primary-color);
     border-radius: 5px;
     color: var(--light-grey);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.5s ease, opacity 0.5s ease;
     background-color: rgba(44, 62, 80, 0.7);
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.contact-item.revealed {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .contact-item i {
@@ -379,6 +482,41 @@ nav ul li a {
     color: #34495e;
 }
 
+/* Text jumping animation on hover */
+.contact-item span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover span {
+    animation: textJump 0.6s ease;
+}
+
+/* Light mode text jumping animation */
+body.light-mode .contact-item span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+body.light-mode .contact-item:hover span {
+    animation: textJump 0.6s ease;
+}
+
+@keyframes textJump {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-8px);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+    75% {
+        transform: translateY(-2px);
+    }
+}
+
 /* Footer */
 footer {
     background-color: rgba(52, 73, 94, 0.9);
@@ -387,6 +525,83 @@ footer {
     padding: 20px 0;
     margin-top: 40px;
     font-size: 0.9em;
+}
+
+/* Project Detail Page Styles */
+.detail-image-gallery {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.main-detail-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.main-detail-image:hover {
+    transform: scale(1.02);
+}
+
+.project-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.project-meta {
+    text-align: center;
+    color: var(--dark-grey);
+    margin-bottom: 30px;
+    font-size: 0.9em;
+}
+
+.project-description-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(44, 62, 80, 0.9);
+    border-radius: 8px;
+    line-height: 1.7;
+}
+
+.project-description-content h3 {
+    color: var(--primary-color);
+    font-family: 'Poppins', sans-serif;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.project-description-content ul {
+    padding-left: 20px;
+}
+
+.project-description-content li {
+    margin-bottom: 8px;
+}
+
+/* Light mode styles for project detail */
+body.light-mode .project-description-content {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #2c3e50;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .project-title {
+    color: var(--primary-color);
+}
+
+body.light-mode .project-meta {
+    color: #34495e;
+}
+
+body.light-mode .project-description-content h3 {
+    color: var(--primary-color);
 }
 
 /* Light Mode Styles */
@@ -453,8 +668,8 @@ body.light-mode .project-item {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-body.light-mode .project-item:hover {
-    transform: scale(1.03) translateY(-8px);
+body.light-mode .project-item.revealed:hover {
+    transform: scale(1.03) translateY(-8px) !important;
     box-shadow: 0 20px 40px rgba(231, 76, 60, 0.25);
     border-color: var(--primary-color);
 }
@@ -502,10 +717,21 @@ body.light-mode .section-content-container {
     border: 1px solid rgba(231, 76, 60, 0.1);
 }
 
+body.light-mode .about-content {
+    color: #2c3e50;
+    font-weight: 500;
+    margin: 15px 0;
+}
+
 body.light-mode .about-content p {
     color: #2c3e50;
     font-weight: 500;
     margin: 15px 0;
+}
+
+body.light-mode .contact-info {
+    color: #2c3e50;
+    font-weight: 600;
 }
 
 body.light-mode .contact-info p {
@@ -524,415 +750,27 @@ body.light-mode .contact-item {
 body.light-mode .contact-item:hover {
     background-color: var(--primary-color);
     color: white;
-    transform: translateY(-3px);
+    transform: translateY(-3px) scale(1);
     box-shadow: 0 10px 25px rgba(231, 76, 60, 0.4);
     border-color: var(--primary-color);
 }
 
-body.light-mode footer {
-    background-color: rgba(255, 255, 255, 0.95);
+/* Light mode styles for back button */
+body.light-mode .back-button {
     color: #2c3e50;
-    font-weight: 600;
-    box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(231, 76, 60, 0.2);
 }
 
-/* Light Mode for Project Detail Pages */
-body.light-mode.project-detail {
-    background: url('../images/background-mainwhite.jpg') no-repeat center center fixed;
-    background-size: cover;
-}
-
-body.light-mode .project-title {
-    color: #2c3e50;
-    font-weight: 800;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-body.light-mode .project-meta {
-    color: #34495e;
-    font-weight: 600;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 10px;
-    border-radius: 6px;
-    display: inline-block;
-}
-
-/* Project Detail Page Styling */
-.project-detail {
-    background: url('../images/background-project.jpg') no-repeat center center fixed;
-    background-size: cover;
-    min-height: 100vh;
-    padding-top: 20px; /* Normal spacing without header */
-}
-
-
-
-/* Mobile adjustments for project detail */
-@media (max-width: 480px) {
-    .project-detail {
-        padding-top: 20px; /* Normal spacing for mobile */
-    }
-    }
-    
-    .project-title {
-        font-size: 1.8em;
-        margin-bottom: 5px;
-    }
-    
-    .project-meta {
-        font-size: 0.85em;
-        margin-bottom: 15px;
-    }
-    
-    .detail-image-gallery {
-        margin: 15px 0;
-    }
-    
-    .project-description-content {
-        padding: 20px 15px;
-        margin: 15px 0;
-    }
-}
-
-.project-title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 3em;
-    color: var(--primary-color);
-    margin-bottom: 5px;
-    text-align: center;
-}
-
-.project-meta {
-    text-align: center;
-    color: var(--dark-grey);
-    font-size: 1.1em;
-    margin-bottom: 20px;
-    font-weight: 500;
-}
-
-.detail-image-gallery {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.main-detail-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
-}
-
-.main-detail-image:hover {
-    transform: scale(1.02);
-}
-
-.project-description-content {
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 30px;
-    border-radius: 12px;
-    margin: 20px 0;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-.project-description-content h3 {
-    color: #2c3e50;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.8em;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 10px;
-}
-
-.project-description-content h3:first-child {
-    margin-top: 0;
-}
-
-.project-description-content p {
-    color: #2c3e50;
-    line-height: 1.7;
-    margin-bottom: 20px;
-    font-size: 1.05em;
-}
-
-.project-description-content ul {
-    color: #2c3e50;
-    line-height: 1.7;
-    padding-left: 20px;
-}
-
-.project-description-content li {
-    margin-bottom: 10px;
-    font-size: 1.05em;
-    color: #2c3e50;
-}
-
-.project-description-content li strong {
-    color: var(--primary-color);
-}
-
-.project-links {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid var(--dark-grey);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    body {
-        padding-top: 75px; /* Increase space for tablet header */
-    }
-    
-    nav {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        padding: 8px 0;
-    }
-    
-    nav ul {
-        margin: 0;
-        padding: 0;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 10px;
-        width: 100%;
-    }
-    
-    nav ul li {
-        margin: 0 8px;
-        display: flex;
-        align-items: center;
-    }
-    
-    nav ul li a {
-        font-size: 0.8em;
-        padding: 8px 12px;
-        border-radius: 6px;
-        transition: all 0.3s ease;
-        white-space: nowrap;
-    }
-    
-    .logo-img {
-        height: 28px;
-    }
-    
-    /* Mobile Navigation Slider Adjustments */
-    .nav-slider {
-        bottom: -3px;
-        height: 2px;
-        border-radius: 1px;
-    }
-    
-    .theme-toggle {
-        width: 30px;
-        height: 30px;
-        font-size: 0.9em;
-        margin: 0;
-        position: static;
-    }
-    
-    .hero-content h1 { 
-        font-size: 2.2em; 
-        line-height: 1.2;
-    }
-    
-    .hero-content p { 
-        font-size: 1.1em; 
-    }
-    
-    .section-title h2 { 
-        font-size: 2em; 
-    }
-    
-    .project-grid { 
-        grid-template-columns: 1fr; 
-        gap: 20px;
-    }
-    
-    .contact-methods { 
-        flex-direction: column; 
-    }
-    
-    .section-content-container { 
-        padding: 25px 20px; 
-        margin: 15px 0;
-    }
-    
-    .project-title {
-        font-size: 2.2em;
-    }
-    
-    .project-description-content {
-        padding: 25px 20px;
-    }
-    
-    .main-detail-image {
-        margin: 20px 0;
-    }
-}
-
-/* Mobile Touch Optimization */
-@media (max-width: 480px) {
-    body {
-        padding-top: 105px; /* Increase space for 2-row mobile header */
-    }
-    
-    .container {
-        padding: 0 15px;
-    }
-    
-    header {
-        padding: 10px 0;
-        min-height: 85px; /* Taller header for 2 rows */
-    }
-    
-    nav {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-    }
-    
-    .logo {
-        order: 1;
-        margin-bottom: 2px;
-    }
-    
-    nav ul {
-        margin: 0;
-        padding: 0;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: auto auto;
-        gap: 6px 8px;
-        justify-items: center;
-        width: 100%;
-        max-width: 320px;
-        order: 2;
-        position: relative;
-    }
-    
-    /* Navigation links - first row */
-    nav ul li:nth-child(1) { grid-row: 1; grid-column: 1; }
-    nav ul li:nth-child(2) { grid-row: 1; grid-column: 2; }
-    nav ul li:nth-child(3) { grid-row: 1; grid-column: 3; }
-    nav ul li:nth-child(4) { grid-row: 1; grid-column: 4; }
-    
-    /* Toggle buttons - second row, centered in middle columns */
-    nav ul li:nth-child(5) { grid-row: 2; grid-column: 2; }
-    nav ul li:nth-child(6) { grid-row: 2; grid-column: 3; }
-    
-    /* Slider positioned across all columns on first row */
-    .nav-slider { 
-        grid-row: 1; 
-        grid-column: 1 / -1;
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        right: 0;
-        display: none !important;
-    }
-    
-    nav ul li {
-        margin: 0;
-        flex: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    nav ul li a {
-        font-size: 0.65em;
-        padding: 6px 8px;
-        min-height: 34px; /* Touch target size */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        white-space: nowrap;
-        border-radius: 4px;
-        text-align: center;
-        min-width: 60px;
-    }
-    
-    .logo-img {
-        height: 26px;
-    }
-    
-    .theme-toggle {
-        width: 38px;
-        height: 34px;
-        font-size: 0.8em;
-        padding: 4px;
-        margin: 0;
-        position: static;
-        border-radius: 50%;
-    }
-    
-    .language-toggle {
-        width: 48px;
-        height: 34px;
-        font-size: 0.65em;
-        padding: 4px 6px;
-        margin: 0;
-        position: static;
-        border-radius: 17px;
-    }
-    
-    #lang-text {
-        font-size: 0.7em;
-        font-weight: 700;
-    }
-    
-    .nav-slider {
-        /* Disable slider on very small screens for better performance */
-        display: none !important;
-        opacity: 0 !important;
-    }
-    
-    .hero-content h1 {
-        font-size: 1.6em;
-        margin-bottom: 8px;
-        line-height: 1.3;
-    }
-    
-    .hero-content p {
-        font-size: 0.9em;
-    }
-    
-    .section-title h2 {
-        font-size: 1.4em;
-    }
-    
-    .section-content-container {
-        padding: 20px 15px;
-        margin: 10px 0;
-    }
-    
-    .project-info h4 {
-        font-size: 1.1em;
-        line-height: 1.3;
-    }
-    
-    .project-info .description {
-        font-size: 0.85em;
-    }
-    
-    .contact-item {
-        padding: 12px 20px;
-        font-size: 0.9em;
-    }
-    
-    /* Ensure text doesn't overflow */
-    .hero-content,
-    .section-content-container,
-    .project-info {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-    }
+body.light-mode .back-button:hover {
+    color: white;
+    background-color: var(--primary-color);
+    transform: translateX(-5px) translateY(-2px);
+    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+    border-color: var(--primary-color);
 }
 
 /* Back to Projects Button */
@@ -968,15 +806,270 @@ body.light-mode .project-meta {
     box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
 }
 
-/* Light mode styles for back button */
-body.light-mode .back-button {
-    color: #2c3e50;
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+/* Media Queries - Mobile Responsive */
+@media (max-width: 768px) {
+    /* Mobile Header Layout - 3 rows */
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 0 10px;
+    }
+    
+    /* Hide desktop logo, show mobile logo */
+    .logo-desktop {
+        display: none;
+    }
+    
+    .logo-mobile,
+    .nav-logo-row {
+        display: flex;
+        order: 1;
+    }
+    
+    /* First row: Logo centered */
+    .nav-logo-row {
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 2px 0;
+    }
+    
+    /* Second row: Main navigation */
+    .nav-main-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        order: 2;
+    }
+    
+    /* Third row: Language and theme buttons */
+    .nav-controls-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+        order: 3;
+        padding: 0;
+    }
+    
+    /* Mobile navigation list styling */
+    nav ul {
+        display: flex;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+    }
+    
+    nav ul li {
+        margin: 0;
+    }
+    
+    nav ul li a {
+        font-size: 0.8em;
+        padding: 4px 8px;
+    }
+    
+    /* Adjust header height for mobile - 3 rows */
+    header {
+        min-height: 90px; /* Increased for 3 rows */
+        padding: 5px 0;
+    }
+    
+    /* Adjust body padding for new header height */
+    body {
+        padding-top: 100px; /* Increased padding for 3-row header */
+    }
+    
+    /* Smaller logo for mobile */
+    .logo-img {
+        height: 26px;
+    }
+    
+    /* Mobile button sizing */
+    .theme-toggle,
+    .language-toggle {
+        height: 28px;
+        font-size: 0.75em;
+    }
+    
+    .theme-toggle {
+        width: 28px;
+    }
+    
+    .language-toggle {
+        min-width: 45px;
+        padding: 3px 6px;
+    }
+    
+    /* Adjust navigation slider for mobile */
+    .nav-slider {
+        bottom: -2px;
+        height: 1.5px;
+    }
+    
+    /* Mobile project grid */
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 10px;
+    }
+    
+    /* Reduce project image height for mobile */
+    .project-item img {
+        height: 150px; /* Reduced from 200px */
+    }
+    
+    .project-info {
+        padding: 15px; /* Slightly less padding */
+    }
+    
+    .project-info h4 {
+        font-size: 1.2em; /* Slightly smaller title */
+    }
+    
+    .project-info .description {
+        font-size: 0.85em; /* Smaller description text */
+        line-height: 1.4;
+    }
+    
+    /* Mobile project detail page */
+    .main-detail-image {
+        max-width: 100%;
+        height: 180px; /* Fixed height for mobile */
+        object-fit: cover;
+        width: 100%;
+    }
+    
+    .project-title {
+        font-size: 1.6em;
+        margin-bottom: 8px;
+    }
+    
+    .project-meta {
+        font-size: 0.8em;
+        margin-bottom: 20px;
+    }
+    
+    .project-description-content {
+        margin: 0 10px;
+        padding: 15px;
+    }
+    
+    .project-description-content h3 {
+        font-size: 1.2em;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    
+    /* Mobile hero section */
+    #hero {
+        min-height: 30vh;
+        padding: 20px 0;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    /* Mobile sections */
+    .section-content-container {
+        margin: 0 10px;
+        padding: 20px;
+    }
+    
+    .contact-methods {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .contact-item {
+        justify-content: center;
+        padding: 12px 20px;
+    }
 }
 
-body.light-mode .back-button:hover {
-    color: white;
-    background-color: var(--primary-color);
-    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+/* Light mode mobile styles */
+@media (max-width: 768px) {
+    /* Remove border styling for light mode as well */
+}
+
+/* Very small screens - phones in portrait */
+@media (max-width: 480px) {
+    header {
+        min-height: 95px;
+    }
+    
+    body {
+        padding-top: 105px;
+    }
+    
+    nav ul {
+        gap: 8px;
+    }
+    
+    nav ul li a {
+        font-size: 0.75em;
+        padding: 3px 6px;
+    }
+    
+    .nav-logo-row {
+        padding: 1px 0;
+    }
+    
+    .logo-img {
+        height: 24px;
+    }
+    
+    /* Even smaller project images for very small screens */
+    .project-item img {
+        height: 120px; /* Further reduced for portrait phones */
+    }
+    
+    .project-info {
+        padding: 12px;
+    }
+    
+    .project-info h4 {
+        font-size: 1.1em;
+    }
+    
+    .project-info .description {
+        font-size: 0.8em;
+        line-height: 1.3;
+    }
+    
+    /* Very small screens - project detail */
+    .main-detail-image {
+        height: 140px; /* Even smaller height for portrait phones */
+    }
+    
+    .project-title {
+        font-size: 1.4em;
+    }
+    
+    .project-description-content {
+        margin: 0 5px;
+        padding: 12px;
+    }
+    
+    .project-description-content h3 {
+        font-size: 1.1em;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .section-content-container {
+        margin: 0 5px;
+        padding: 15px;
+    }
 }
