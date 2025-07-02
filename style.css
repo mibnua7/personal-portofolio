@@ -281,6 +281,16 @@ nav ul li a {
     color: var(--light-grey);
 }
 
+.detail-image-gallery {
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.main-detail-image {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
 /* Project Grid and Items */
 .project-grid {
     display: grid;
@@ -296,6 +306,11 @@ nav ul li a {
     transition: transform 0.5s ease, box-shadow 0.3s ease, opacity 0.5s ease;
     opacity: 0;
     transform: translateX(-100px);
+}
+
+.main-detail-image {
+    min-height: 200px;
+    max-height: 400px;
 }
 
 /* Animation states for scroll reveal */
@@ -527,6 +542,22 @@ footer {
     font-size: 0.9em;
 }
 
+/* Detail image gallery container */
+.detail-image-gallery {
+    margin: 20px 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px;
+}
+
+/* Mobile image gallery */
+.detail-image-gallery {
+    margin: 15px 0;
+    min-height: 180px;
+}
+
 /* Project Detail Page Styles */
 .detail-image-gallery {
     margin: 20px 0;
@@ -536,10 +567,14 @@ footer {
 .main-detail-image {
     width: 100%;
     max-width: 600px;
-    height: auto;
+    height: 300px;
+    object-fit: contain;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 0 auto;
 }
 
 .main-detail-image:hover {
@@ -939,9 +974,10 @@ body.light-mode .back-button:hover {
     /* Mobile project detail page */
     .main-detail-image {
         max-width: 100%;
-        height: 180px; /* Fixed height for mobile */
-        object-fit: cover;
+        height: 200px; /* Fixed height for mobile */
+        object-fit: contain;
         width: 100%;
+        background-color: rgba(0, 0, 0, 0.15);
     }
     
     .project-title {
@@ -1048,7 +1084,9 @@ body.light-mode .back-button:hover {
     
     /* Very small screens - project detail */
     .main-detail-image {
-        height: 140px; /* Even smaller height for portrait phones */
+        height: 160px; /* Even smaller height for portrait phones */
+        object-fit: contain;
+        background-color: rgba(0, 0, 0, 0.15);
     }
     
     .project-title {
@@ -1072,4 +1110,8 @@ body.light-mode .back-button:hover {
         margin: 0 5px;
         padding: 15px;
     }
+}
+
+body.light-mode .main-detail-image {
+    background-color: rgba(255, 255, 255, 0.8);
 }
