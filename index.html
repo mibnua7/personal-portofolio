@@ -161,16 +161,71 @@
     <!-- ENHANCED NAVIGATION SCRIPT -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Get scroll container (use window for body scroll) and navigation elements
+            console.log('DOM loaded, initializing navigation...');
+            
+            // Get navigation elements
             const navLinks = document.querySelectorAll('.nav-link');
             const header = document.querySelector('header');
+            const sections = document.querySelectorAll('section[id]');
             
             if (!navLinks.length) {
                 console.error('No navigation links found');
                 return;
             }
             
-            // Setup navigation click handlers
+            // Header auto-hide functionality
+            let lastScrollTop = 0;
+            const hideThreshold = 80;
+            
+            function handleScroll() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Header auto-hide logic
+                if (header) {
+                    if (scrollTop > lastScrollTop && scrollTop > hideThreshold) {
+                        header.style.transform = 'translateY(-100%)';
+                        header.style.opacity = '0.95';
+                    } else {
+                        header.style.transform = 'translateY(0)';
+                        header.style.opacity = '1';
+                    }
+                }
+                
+                // Update active nav link based on scroll position
+                updateActiveNavLink();
+                
+                lastScrollTop = scrollTop;
+            }
+            
+            // Function to update active nav link based on current section in view
+            function updateActiveNavLink() {
+                const scrollPosition = window.scrollY + 150; // Offset for header
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                // If at the very top, set hero as active
+                if (window.scrollY < 100) {
+                    current = 'hero';
+                }
+                
+                // Update active class on nav links
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-section') === current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            // Setup navigation click handlers with smooth scroll
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -179,52 +234,29 @@
                     const targetSection = document.getElementById(sectionId);
                     
                     if (targetSection) {
-                        // Calculate position relative to document, accounting for header
                         const targetY = targetSection.offsetTop - 80; // Account for header height
                         
-                        // Scroll window with smooth behavior
                         window.scrollTo({
                             top: targetY,
                             behavior: 'smooth'
                         });
                         
-                        // Update active state
+                        // Manually update active state
                         navLinks.forEach(nl => nl.classList.remove('active'));
                         this.classList.add('active');
                     }
                 });
             });
             
-            // Setup header auto-hide on scroll
-            let lastScrollTop = 0;
-            const hideThreshold = 80; // Pixels to scroll before hiding header
+            // Add scroll event listener
+            window.addEventListener('scroll', handleScroll);
             
-            window.addEventListener('scroll', function() {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                if (header) {
-                    if (scrollTop > lastScrollTop && scrollTop > hideThreshold) {
-                        // Scrolling down - hide header
-                        header.style.transform = 'translateY(-100%)';
-                        header.style.opacity = '0.95';
-                    } else {
-                        // Scrolling up or at top - show header
-                        header.style.transform = 'translateY(0)';
-                        header.style.opacity = '1';
-                    }
-                }
-                
-                lastScrollTop = scrollTop;
-            });
-            
-            // Set first link as active by default
-            if (navLinks.length > 0) {
-                navLinks[0].classList.add('active');
-            }
-            
-            // Debug log for verification
-            console.log('Navigation initialized successfully');
-            console.log('Navigation links:', navLinks.length);
+            // Set initial active state
+            setTimeout(() => {
+                updateActiveNavLink();
+                console.log('Navigation initialized successfully');
+                console.log('Navigation links:', navLinks.length);
+            }, 100);
         });
     </script>
 
@@ -325,50 +357,7 @@
         });
     </script>
 
-    <!-- HEADER AUTO-HIDE ONLY -->
-    <script>
-        // Initialize on page load
-        window.addEventListener('load', function() {
-            console.log('Page loaded, setting up header auto-hide...');
-            
-            // Header auto-hide
-            const header = document.querySelector('header');
-            if (header) {
-                let lastScroll = 0;
-                window.addEventListener('scroll', function() {
-                    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-                    
-                    if (currentScroll > 100) {
-                        if (currentScroll > lastScroll) {
-                            header.style.transform = 'translateY(-100%)';
-                        } else {
-                            header.style.transform = 'translateY(0)';
-                        }
-                    } else {
-                        header.style.transform = 'translateY(0)';
-                    }
-                    lastScroll = currentScroll;
-                });
-                console.log('Header auto-hide setup complete');
-            }
-            
-            // Set home as active initially
-            setTimeout(() => {
-                const homeLink = document.querySelector('[data-section="hero"]');
-                if (homeLink) {
-                    homeLink.classList.add('active');
-                    console.log('Home link set as active');
-                }
-            }, 100);
-            
-            // Test navigation function
-            if (typeof window.scrollToSection === 'function') {
-                console.log('Navigation function is ready!');
-            } else {
-                console.error('Navigation function not found!');
-            }
-        });
-    </script>
+
 
     <!-- ANIMATIONS SCRIPT -->
     <script>
