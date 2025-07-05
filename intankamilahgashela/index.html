@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Untuk Intan Kamilah Gashela ❤️</title>
-    <link rel="icon" type="image/jpeg" href="images/favicon.jpeg">
+    <link rel="icon" type="image/jpeg" href="../images/favicon.jpeg">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -392,11 +392,13 @@
     </div>
 
     <!-- Video Modal -->
-    <div id="videoModal" class="video-modal">
+    <div id="videoModal" class="video-modal" style="display: none;">
         <div class="video-modal-content">
-            <video id="surpriseVideo" controls autoplay>
-                <source src="videos/surpriseint.mp4" type="video/mp4">
-                Browser Anda tidak mendukung video HTML5.
+            <video id="surpriseVideo" controls preload="metadata" muted>
+                <source src="../videos/surpriseint.mp4" type="video/mp4">
+                <source src="../videos/surpriseint.webm" type="video/webm">
+                <source src="../videos/surpriseint.ogv" type="video/ogg">
+                <p>Browser Anda tidak mendukung video HTML5. <a href="../videos/surpriseint.mp4">Download video</a></p>
             </video>
             <div class="video-controls">
                 <button class="video-back-btn" onclick="closeVideoAndShowSurprise()">
@@ -442,28 +444,94 @@
 
         // Video and Surprise modal functions
         function showSurprise() {
-            // Show video modal first
-            document.getElementById('videoModal').style.display = 'block';
+            console.log('showSurprise() called');
             const video = document.getElementById('surpriseVideo');
+            const videoModal = document.getElementById('videoModal');
             
-            // Reset video to beginning
+            if (!video || !videoModal) {
+                console.error('Video or modal element not found');
+                showSurpriseModal();
+                return;
+            }
+            
+            console.log('Video element found:', video.src);
+            console.log('Video readyState:', video.readyState);
+            
+            // Reset video state
+            video.pause();
             video.currentTime = 0;
-            video.play();
             
-            // Auto proceed to surprise modal when video ends
-            video.addEventListener('ended', function() {
+            // Clear any existing event listeners
+            const newVideo = video.cloneNode(true);
+            video.parentNode.replaceChild(newVideo, video);
+            
+            // Get the new video element reference
+            const videoElement = document.getElementById('surpriseVideo');
+            
+            // Add event listeners to new video element
+            videoElement.addEventListener('loadstart', function() {
+                console.log('Video loading started');
+            });
+            
+            videoElement.addEventListener('loadedmetadata', function() {
+                console.log('Video metadata loaded');
+            });
+            
+            videoElement.addEventListener('error', function(e) {
+                console.log('Video error:', e);
+                console.log('Video failed to load, showing surprise modal directly');
+                showSurpriseModal();
+            });
+            
+            videoElement.addEventListener('canplay', function() {
+                console.log('Video can be played');
+                // Show video modal
+                videoModal.style.display = 'block';
+                
+                // Try to play the video
+                videoElement.play().catch(function(error) {
+                    console.log('Video autoplay failed:', error);
+                    // Video is loaded but autoplay failed, that's okay
+                });
+            });
+            
+            videoElement.addEventListener('ended', function() {
+                console.log('Video ended');
                 closeVideoAndShowSurprise();
-            }, { once: true });
+            });
+            
+            // Try to load the video
+            console.log('Loading video...');
+            videoElement.load();
+            
+            // Fallback: if video doesn't start loading in 3 seconds, show modal directly
+            setTimeout(() => {
+                if (videoModal.style.display !== 'block') {
+                    console.log('Video loading timeout, showing surprise modal directly');
+                    showSurpriseModal();
+                }
+            }, 3000);
         }
 
         function closeVideoAndShowSurprise() {
+            console.log('closeVideoAndShowSurprise() called');
             // Hide video modal
-            document.getElementById('videoModal').style.display = 'none';
+            const videoModal = document.getElementById('videoModal');
+            if (videoModal) {
+                videoModal.style.display = 'none';
+            }
             
             // Pause video
             const video = document.getElementById('surpriseVideo');
-            video.pause();
+            if (video) {
+                video.pause();
+            }
             
+            // Show surprise modal
+            showSurpriseModal();
+        }
+
+        function showSurpriseModal() {
             // Show surprise modal
             document.getElementById('surpriseModal').style.display = 'block';
             
@@ -569,6 +637,34 @@
                 quoteIndex = (quoteIndex + 1) % loveQuotes.length;
             }, 500);
         }, 5000);
+
+        // Test video path function
+        function testVideoPath() {
+            const video = document.getElementById('surpriseVideo');
+            const sources = video.querySelectorAll('source');
+            
+            console.log('Testing video sources:');
+            sources.forEach((source, index) => {
+                console.log(`Source ${index + 1}: ${source.src}`);
+                
+                // Create a test video element to check if source loads
+                const testVideo = document.createElement('video');
+                testVideo.addEventListener('loadedmetadata', () => {
+                    console.log(`✓ Source ${index + 1} loaded successfully`);
+                });
+                testVideo.addEventListener('error', () => {
+                    console.log(`✗ Source ${index + 1} failed to load`);
+                });
+                testVideo.src = source.src;
+                testVideo.load();
+            });
+        }
+
+        // Call test function on page load
+        window.addEventListener('load', () => {
+            console.log('Page loaded, testing video paths...');
+            testVideoPath();
+        });
     </script>
 </body>
 </html>
