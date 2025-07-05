@@ -211,7 +211,7 @@
             font-size: 1rem;
             color: rgba(255, 255, 255, 0.8);
             line-height: 1.6;
-            max-width: 400px;
+            max-width: 100%;
         }
 
         /* Responsive */
@@ -246,11 +246,16 @@
             }
             
             .description {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
+                line-height: 1.5;
             }
         }
 
         @media (max-width: 480px) {
+            .content {
+                padding: 1.5rem 1rem;
+            }
+            
             .sempro,
             .sempro-shadow {
                 font-size: 2.5rem;
@@ -265,6 +270,11 @@
             .name {
                 font-size: 1.3rem;
                 letter-spacing: 0em;
+            }
+            
+            .description {
+                font-size: 0.8rem;
+                line-height: 1.4;
             }
         }
 
