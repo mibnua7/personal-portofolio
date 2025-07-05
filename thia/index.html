@@ -221,11 +221,14 @@
         @media (max-width: 768px) {
             .card-container {
                 max-width: 90vw;
-                aspect-ratio: 2/3;
+                aspect-ratio: 1/1.2;
+                min-height: 75vh;
             }
             
             .content {
                 padding: 2rem 1.5rem;
+                min-height: 100%;
+                justify-content: space-between;
             }
             
             .header-text {
@@ -267,8 +270,16 @@
         }
 
         @media (max-width: 480px) {
+            .card-container {
+                max-width: 90vw;
+                aspect-ratio: 1/1.3;
+                min-height: 85vh;
+            }
+            
             .content {
                 padding: 1.5rem 1rem;
+                min-height: 100%;
+                justify-content: space-between;
             }
             
             .header-text {
@@ -295,6 +306,7 @@
             
             .photo-container {
                 margin: 1rem 0;
+                flex: 1;
             }
             
             .photo-frame {
@@ -311,6 +323,79 @@
             .description {
                 font-size: 0.8rem;
                 line-height: 1.4;
+            }
+        }
+
+        /* Extra small phones */
+        @media (max-width: 360px) {
+            body {
+                padding: 0.5rem;
+            }
+            
+            .card-container {
+                max-width: 98vw;
+                aspect-ratio: 1/1.4;
+                min-height: 90vh;
+            }
+            
+            .content {
+                padding: 1rem 0.8rem;
+                min-height: 100%;
+                justify-content: space-between;
+            }
+            
+            .header-text {
+                margin-bottom: 0.5rem;
+            }
+            
+            .selamat {
+                margin-bottom: 1px;
+                font-size: 1.4rem;
+            }
+            
+            .sempro,
+            .sempro-shadow {
+                font-size: 2.2rem;
+            }
+            
+            .sempro {
+                margin-bottom: 0.1rem;
+            }
+            
+            .sempro-shadow {
+                margin-top: -2.3rem;
+            }
+            
+            .photo-container {
+                margin: 0.5rem 0;
+                flex: 1;
+                min-height: 180px;
+            }
+            
+            .photo-frame {
+                width: 140px;
+                height: 180px;
+                padding: 10px;
+            }
+            
+            .name {
+                font-size: 1.1rem;
+                letter-spacing: -0.01em;
+                margin-bottom: 0.6rem;
+                line-height: 1.0;
+            }
+            
+            .description {
+                font-size: 0.75rem;
+                line-height: 1.3;
+            }
+            
+            .decorative-text {
+                font-size: 0.7rem;
+            }
+            
+            .decorative-crosses {
+                font-size: 1rem;
             }
         }
 
