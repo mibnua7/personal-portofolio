@@ -84,7 +84,7 @@
 
         /* Header Text */
         .header-text {
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
         }
 
         .selamat {
@@ -93,8 +93,9 @@
             font-weight: 400;
             color: #ffffff;
             font-style: italic;
-            margin-bottom: 0.5rem;
+            margin-bottom: 5px;
             letter-spacing: 0.05em;
+            display: block;
         }
 
         .sempro {
@@ -105,11 +106,12 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 0.9;
+            line-height: 1.1;
             letter-spacing: -0.02em;
             text-transform: uppercase;
             margin-bottom: 0.5rem;
             filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+            display: block;
         }
 
         .sempro-shadow {
@@ -117,13 +119,14 @@
             font-size: 4.5rem;
             font-weight: 900;
             color: rgba(255, 255, 255, 0.1);
-            line-height: 0.9;
+            line-height: 1.1;
             letter-spacing: -0.02em;
             text-transform: uppercase;
-            margin-top: -4.2rem;
+            margin-top: -5rem;
             margin-left: 0.1rem;
             z-index: -1;
             position: relative;
+            display: block;
         }
 
         /* Photo Container */
@@ -225,14 +228,26 @@
                 padding: 2rem 1.5rem;
             }
             
+            .header-text {
+                margin-bottom: 1.5rem;
+            }
+            
             .selamat {
                 font-size: 1.8rem;
+                margin-bottom: 2px;
             }
             
             .sempro,
             .sempro-shadow {
                 font-size: 3rem;
-                margin-top: -2.8rem;
+            }
+            
+            .sempro {
+                margin-bottom: 0.3rem;
+            }
+            
+            .sempro-shadow {
+                margin-top: -3.3rem;
             }
             
             .photo-frame {
@@ -256,10 +271,30 @@
                 padding: 1.5rem 1rem;
             }
             
+            .header-text {
+                margin-bottom: 0.8rem;
+            }
+            
+            .selamat {
+                margin-bottom: 2px;
+                font-size: 1.6rem;
+            }
+            
             .sempro,
             .sempro-shadow {
                 font-size: 2.5rem;
-                margin-top: -2.3rem;
+            }
+            
+            .sempro {
+                margin-bottom: 0.2rem;
+            }
+            
+            .sempro-shadow {
+                margin-top: -2.7rem;
+            }
+            
+            .photo-container {
+                margin: 1rem 0;
             }
             
             .photo-frame {
@@ -270,6 +305,7 @@
             .name {
                 font-size: 1.3rem;
                 letter-spacing: 0em;
+                margin-bottom: 0.8rem;
             }
             
             .description {
