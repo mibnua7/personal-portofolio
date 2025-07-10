@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Pemantau Suhu dan Kelembapan - Detail Proyek</title>
+    <link rel="icon" type="image/jpeg" href="../images/favicon.jpeg">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="project-detail">
+
+
+    <section id="project-detail">
+        <div class="container">
+            <div class="back-to-projects">
+                <a href="../index.html#work" class="back-button"><i class="fas fa-arrow-left"></i> <span data-lang="back-to-projects">Kembali ke Proyek</span></a>
+            </div>
+            
+            <h1 class="project-title" data-lang="project3-title">App Pemantau Suhu dan Kelembapan</h1>
+            <p class="project-meta"><span data-lang="category">Kategori</span>: Mobile App | <span data-lang="year">Tahun</span>: 2024 | Platform: MIT App Inventor</p>
+            
+            <div class="detail-image-gallery">
+                <img src="../images/project3.jpeg" alt="App Pemantau - Gambar Utama" class="main-detail-image">
+            </div>
+
+            <div class="project-description-content">
+                <h3 data-lang="about-project">Tentang Proyek Ini</h3>
+                <p data-lang="monitoring-app-desc">Aplikasi mobile "Pemantau Suhu dan Kelembapan" adalah solusi IoT yang memungkinkan pengguna untuk memantau kondisi lingkungan secara real-time melalui smartphone. Aplikasi ini dikembangkan menggunakan MIT App Inventor dan terhubung dengan sensor melalui API.</p>
+                
+                <h3 data-lang="main-features">Fitur Utama</h3>
+                <ul>
+                    <li><strong data-lang="realtime-monitoring">Real-time Monitoring:</strong> <span data-lang="realtime-desc">Tampilan data suhu dan kelembapan secara langsung</span></li>
+                    <li><strong data-lang="historical-chart">Grafik Historical:</strong> <span data-lang="chart-desc">Visualisasi data dalam bentuk chart untuk analisis trend</span></li>
+                    <li><strong data-lang="alert-system">Alert System:</strong> <span data-lang="alert-desc">Notifikasi push saat kondisi melebihi batas normal</span></li>
+                    <li><strong data-lang="data-export">Data Export:</strong> <span data-lang="export-desc">Kemampuan export data untuk analisis lebih lanjut</span></li>
+                    <li><strong data-lang="multi-device">Multi-device Support:</strong> <span data-lang="multi-desc">Dapat menampilkan data dari beberapa sensor sekaligus</span></li>
+                </ul>
+
+                <h3 data-lang="tech-used">Teknologi yang Digunakan</h3>
+                <ul>
+                    <li><strong>MIT App Inventor:</strong> <span data-lang="mit-desc">Platform pengembangan aplikasi mobile visual</span></li>
+                    <li><strong>REST API:</strong> <span data-lang="api-desc">Komunikasi data antara sensor dan aplikasi</span></li>
+                    <li><strong>JSON Format:</strong> <span data-lang="json-desc">Format pertukaran data yang efisien</span></li>
+                    <li><strong>Firebase:</strong> <span data-lang="firebase-desc">Backend database untuk penyimpanan data</span></li>
+                    <li><strong>Chart Components:</strong> <span data-lang="chart-lib-desc">Library untuk visualisasi data</span></li>
+                </ul>
+
+                <h3 data-lang="system-architecture">Arsitektur Sistem</h3>
+                <ul>
+                    <li data-lang="arch1">Sensor DHT22 membaca data suhu dan kelembapan</li>
+                    <li data-lang="arch2">Mikrokontroler ESP32 mengirim data ke cloud database</li>
+                    <li data-lang="arch3">API endpoint menyediakan data dalam format JSON</li>
+                    <li data-lang="arch4">Aplikasi mobile mengambil data melalui HTTP request</li>
+                    <li data-lang="arch5">Interface menampilkan data dalam bentuk dashboard</li>
+                </ul>
+
+                <h3 data-lang="development-process">Proses Pengembangan</h3>
+                <ol>
+                    <li data-lang="dev1">Analisis kebutuhan dan perancangan UI/UX</li>
+                    <li data-lang="dev2">Pembuatan prototype aplikasi di MIT App Inventor</li>
+                    <li data-lang="dev3">Integrasi API untuk komunikasi data</li>
+                    <li data-lang="dev4">Implementasi fitur chart dan alert system</li>
+                    <li data-lang="dev5">Testing dan debugging aplikasi</li>
+                    <li data-lang="dev6">Deployment dan dokumentasi</li>
+                </ol>
+
+                <h3 data-lang="challenges">Tantangan & Solusi</h3>
+                <ul>
+                    <li><strong data-lang="challenge1">Real-time Updates:</strong> <span data-lang="solution1">Menggunakan timer dan HTTP polling untuk update berkala</span></li>
+                    <li><strong data-lang="challenge2">Data Visualization:</strong> <span data-lang="solution2">Implementasi chart library untuk grafik yang responsif</span></li>
+                    <li><strong data-lang="challenge3">Error Handling:</strong> <span data-lang="solution3">Sistem backup dan retry mechanism untuk koneksi yang stabil</span></li>
+                </ul>
+
+                <h3 data-lang="results">Hasil & Dampak</h3>
+                <p data-lang="results-desc">Aplikasi berhasil memberikan solusi monitoring yang user-friendly dengan interface yang intuitif. Pengguna dapat dengan mudah memantau kondisi lingkungan dari jarak jauh dan menerima notifikasi ketika terjadi perubahan yang signifikan.</p>
+                
+                <p class="project-links">
+                    <a href="#" class="project-link" data-lang="view-demo">Lihat Demo</a>
+                    <a href="#" class="project-link" data-lang="download-app">Download APK</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Muhammad Ibnu Abas. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language system
+        const translations = {
+            id: {
+                'back-to-projects': 'Kembali ke Proyek',
+                'category': 'Kategori',
+                'year': 'Tahun',
+                'project3-title': 'App Pemantau Suhu dan Kelembapan',
+                'about-project': 'Tentang Proyek Ini',
+                'monitoring-app-desc': 'Aplikasi mobile "Pemantau Suhu dan Kelembapan" adalah solusi IoT yang memungkinkan pengguna untuk memantau kondisi lingkungan secara real-time melalui smartphone. Aplikasi ini dikembangkan menggunakan MIT App Inventor dan terhubung dengan sensor melalui API.',
+                'main-features': 'Fitur Utama',
+                'realtime-monitoring': 'Real-time Monitoring:',
+                'realtime-desc': 'Tampilan data suhu dan kelembapan secara langsung',
+                'historical-chart': 'Grafik Historical:',
+                'chart-desc': 'Visualisasi data dalam bentuk chart untuk analisis trend',
+                'alert-system': 'Alert System:',
+                'alert-desc': 'Notifikasi push saat kondisi melebihi batas normal',
+                'data-export': 'Data Export:',
+                'export-desc': 'Kemampuan export data untuk analisis lebih lanjut',
+                'multi-device': 'Multi-device Support:',
+                'multi-desc': 'Dapat menampilkan data dari beberapa sensor sekaligus',
+                'tech-used': 'Teknologi yang Digunakan',
+                'mit-desc': 'Platform pengembangan aplikasi mobile visual',
+                'api-desc': 'Komunikasi data antara sensor dan aplikasi',
+                'json-desc': 'Format pertukaran data yang efisien',
+                'firebase-desc': 'Backend database untuk penyimpanan data',
+                'chart-lib-desc': 'Library untuk visualisasi data',
+                'system-architecture': 'Arsitektur Sistem',
+                'arch1': 'Sensor DHT22 membaca data suhu dan kelembapan',
+                'arch2': 'Mikrokontroler ESP32 mengirim data ke cloud database',
+                'arch3': 'API endpoint menyediakan data dalam format JSON',
+                'arch4': 'Aplikasi mobile mengambil data melalui HTTP request',
+                'arch5': 'Interface menampilkan data dalam bentuk dashboard',
+                'development-process': 'Proses Pengembangan',
+                'dev1': 'Analisis kebutuhan dan perancangan UI/UX',
+                'dev2': 'Pembuatan prototype aplikasi di MIT App Inventor',
+                'dev3': 'Integrasi API untuk komunikasi data',
+                'dev4': 'Implementasi fitur chart dan alert system',
+                'dev5': 'Testing dan debugging aplikasi',
+                'dev6': 'Deployment dan dokumentasi',
+                'challenges': 'Tantangan & Solusi',
+                'challenge1': 'Real-time Updates:',
+                'solution1': 'Menggunakan timer dan HTTP polling untuk update berkala',
+                'challenge2': 'Data Visualization:',
+                'solution2': 'Implementasi chart library untuk grafik yang responsif',
+                'challenge3': 'Error Handling:',
+                'solution3': 'Sistem backup dan retry mechanism untuk koneksi yang stabil',
+                'results': 'Hasil & Dampak',
+                'results-desc': 'Aplikasi berhasil memberikan solusi monitoring yang user-friendly dengan interface yang intuitif. Pengguna dapat dengan mudah memantau kondisi lingkungan dari jarak jauh dan menerima notifikasi ketika terjadi perubahan yang signifikan.',
+                'view-demo': 'Lihat Demo',
+                'download-app': 'Download APK'
+            },
+            en: {
+                'back-to-projects': 'Back to Projects',
+                'category': 'Category',
+                'year': 'Year',
+                'project3-title': 'Temperature & Humidity Monitoring App',
+                'about-project': 'About This Project',
+                'monitoring-app-desc': 'The "Temperature & Humidity Monitoring" mobile application is an IoT solution that allows users to monitor environmental conditions in real-time through smartphones. This application was developed using MIT App Inventor and connected to sensors through API.',
+                'main-features': 'Main Features',
+                'realtime-monitoring': 'Real-time Monitoring:',
+                'realtime-desc': 'Direct display of temperature and humidity data',
+                'historical-chart': 'Historical Chart:',
+                'chart-desc': 'Data visualization in chart form for trend analysis',
+                'alert-system': 'Alert System:',
+                'alert-desc': 'Push notifications when conditions exceed normal limits',
+                'data-export': 'Data Export:',
+                'export-desc': 'Ability to export data for further analysis',
+                'multi-device': 'Multi-device Support:',
+                'multi-desc': 'Can display data from multiple sensors simultaneously',
+                'tech-used': 'Technologies Used',
+                'mit-desc': 'Visual mobile application development platform',
+                'api-desc': 'Data communication between sensors and application',
+                'json-desc': 'Efficient data exchange format',
+                'firebase-desc': 'Backend database for data storage',
+                'chart-lib-desc': 'Library for data visualization',
+                'system-architecture': 'System Architecture',
+                'arch1': 'DHT22 sensor reads temperature and humidity data',
+                'arch2': 'ESP32 microcontroller sends data to cloud database',
+                'arch3': 'API endpoint provides data in JSON format',
+                'arch4': 'Mobile application retrieves data through HTTP request',
+                'arch5': 'Interface displays data in dashboard form',
+                'development-process': 'Development Process',
+                'dev1': 'Requirements analysis and UI/UX design',
+                'dev2': 'Application prototype creation in MIT App Inventor',
+                'dev3': 'API integration for data communication',
+                'dev4': 'Implementation of chart and alert system features',
+                'dev5': 'Application testing and debugging',
+                'dev6': 'Deployment and documentation',
+                'challenges': 'Challenges & Solutions',
+                'challenge1': 'Real-time Updates:',
+                'solution1': 'Using timer and HTTP polling for periodic updates',
+                'challenge2': 'Data Visualization:',
+                'solution2': 'Implementation of chart library for responsive graphs',
+                'challenge3': 'Error Handling:',
+                'solution3': 'Backup system and retry mechanism for stable connection',
+                'results': 'Results & Impact',
+                'results-desc': 'The application successfully provides a user-friendly monitoring solution with an intuitive interface. Users can easily monitor environmental conditions remotely and receive notifications when significant changes occur.',
+                'view-demo': 'View Demo',
+                'download-app': 'Download APK'
+            }
+        };
+
+        function getSystemLanguage() {
+            const browserLang = navigator.language || navigator.userLanguage;
+            return browserLang.startsWith('id') ? 'id' : 'en';
+        }
+
+        function applyLanguage(lang) {
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                const key = element.getAttribute('data-lang');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        // Apply language on page load
+        const savedLanguage = localStorage.getItem('language');
+        const currentLanguage = savedLanguage || getSystemLanguage();
+        applyLanguage(currentLanguage);
+    </script>
+</body>
+</html>

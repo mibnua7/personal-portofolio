@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Locker - Detail Proyek</title>
+    <link rel="icon" type="image/jpeg" href="../images/favicon.jpeg">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="project-detail">
+
+
+    <section id="project-detail">
+        <div class="container">
+            <div class="back-to-projects">
+                <a href="../index.html#work" class="back-button"><i class="fas fa-arrow-left"></i> <span data-lang="back-to-projects">Kembali ke Proyek</span></a>
+            </div>
+            
+            <h1 class="project-title">Smart Locker</h1>
+            <p class="project-meta"><span data-lang="category">Kategori</span>: IoT / Microcontroller | <span data-lang="year">Tahun</span>: 2024 | Platform: Arduino IDE</p>
+            
+            <div class="detail-image-gallery">
+                <img src="../images/project4.jpeg" alt="Smart Locker - Gambar Utama" class="main-detail-image">
+            </div>
+
+            <div class="project-description-content">
+                <h3 data-lang="about-project">Tentang Proyek Ini</h3>
+                <p data-lang="smart-locker-desc">Smart Locker adalah sistem keamanan modern yang menggabungkan teknologi RFID dan PIN untuk memberikan akses yang aman dan fleksibel. Sistem ini dirancang untuk aplikasi perkantoran, sekolah, gym, atau area publik yang membutuhkan penyimpanan personal yang aman.</p>
+                
+                <h3 data-lang="security-features">Fitur Keamanan</h3>
+                <ul>
+                    <li data-lang="dual-auth"><strong>Dual Authentication:</strong> Kombinasi RFID card dan PIN untuk keamanan berlapis</li>
+                    <li data-lang="user-reg"><strong>User Registration:</strong> Sistem pendaftaran pengguna baru dengan admin access</li>
+                    <li data-lang="access-log"><strong>Access Logging:</strong> Pencatatan setiap aktivitas buka/tutup locker</li>
+                    <li data-lang="emergency"><strong>Emergency Override:</strong> Master key untuk akses darurat</li>
+                    <li data-lang="auto-lock"><strong>Auto-lock Timer:</strong> Otomatis mengunci setelah periode tertentu</li>
+                </ul>
+
+                <h3 data-lang="system-components">Komponen Sistem</h3>
+                <ul>
+                    <li data-lang="microcontroller"><strong>Arduino Uno/ESP32:</strong> Microcontroller utama untuk mengontrol sistem</li>
+                    <li data-lang="rfid-reader"><strong>RFID Reader (RC522):</strong> Pembaca kartu RFID untuk identifikasi user</li>
+                    <li data-lang="keypad"><strong>Keypad 4x4:</strong> Input PIN dan navigasi menu</li>
+                    <li data-lang="lcd-display"><strong>LCD Display 16x2:</strong> Interface pengguna dan status informasi</li>
+                    <li data-lang="servo-motor"><strong>Servo Motor:</strong> Aktuator untuk mekanisme kunci</li>
+                    <li data-lang="buzzer"><strong>Buzzer:</strong> Feedback audio untuk status sistem</li>
+                    <li data-lang="led-indicators"><strong>LED Indicators:</strong> Status visual (hijau/merah)</li>
+                </ul>
+
+                <h3 data-lang="how-it-works">Cara Kerja Sistem</h3>
+                <ol>
+                    <li data-lang="step1">Pengguna menempelkan kartu RFID ke reader</li>
+                    <li data-lang="step2">Sistem memverifikasi ID kartu dengan database</li>
+                    <li data-lang="step3">Jika valid, sistem meminta input PIN</li>
+                    <li data-lang="step4">Setelah PIN benar, servo motor membuka kunci</li>
+                    <li data-lang="step5">LED hijau menyala dan buzzer berbunyi sebagai konfirmasi</li>
+                    <li data-lang="step6">Locker otomatis terkunci setelah waktu yang ditentukan</li>
+                </ol>
+
+                <h3 data-lang="technical-specs">Spesifikasi Teknis</h3>
+                <ul>
+                    <li data-lang="power-supply"><strong>Power Supply:</strong> 5V DC adapter atau baterai 9V</li>
+                    <li data-lang="operating-temp"><strong>Operating Temperature:</strong> -10°C hingga 60°C</li>
+                    <li data-lang="rfid-freq"><strong>RFID Frequency:</strong> 13.56 MHz</li>
+                    <li data-lang="reading-range"><strong>Reading Range:</strong> 0-60mm</li>
+                    <li data-lang="memory-capacity"><strong>Memory Capacity:</strong> Hingga 100 pengguna</li>
+                </ul>
+
+                <h3 data-lang="development-process">Proses Pengembangan</h3>
+                <ol>
+                    <li data-lang="dev1">Analisis kebutuhan dan perancangan sistem</li>
+                    <li data-lang="dev2">Pembuatan schematic dan PCB design</li>
+                    <li data-lang="dev3">Programming microcontroller dengan Arduino IDE</li>
+                    <li data-lang="dev4">Integrasi komponen hardware</li>
+                    <li data-lang="dev5">Testing keamanan dan fungsionalitas</li>
+                    <li data-lang="dev6">Desain casing dan finishing</li>
+                </ol>
+
+                <h3 data-lang="applications">Aplikasi Penggunaan</h3>
+                <ul>
+                    <li data-lang="app1">Locker karyawan di perkantoran</li>
+                    <li data-lang="app2">Locker siswa di sekolah/universitas</li>
+                    <li data-lang="app3">Locker gym dan fitness center</li>
+                    <li data-lang="app4">Locker bagasi di transportasi umum</li>
+                    <li data-lang="app5">Locker penyimpanan di area publik</li>
+                </ul>
+
+                <h3 data-lang="advantages">Keunggulan Sistem</h3>
+                <ul>
+                    <li data-lang="adv1">Keamanan tinggi dengan dual authentication</li>
+                    <li data-lang="adv2">User-friendly interface dengan LCD display</li>
+                    <li data-lang="adv3">Mudah instalasi dan maintenance</li>
+                    <li data-lang="adv4">Cost-effective dibanding sistem komersial</li>
+                    <li data-lang="adv5">Customizable sesuai kebutuhan</li>
+                </ul>
+
+                <h3 data-lang="results">Hasil & Dampak</h3>
+                <p data-lang="results-desc">Smart Locker ini berhasil memberikan solusi keamanan yang reliable dengan tingkat akurasi autentikasi 99.5%. Sistem ini dapat meningkatkan keamanan area penyimpanan sambil memberikan kemudahan akses bagi pengguna yang terotorisasi.</p>
+                
+                <p class="project-links">
+                    <a href="#" class="project-link" data-lang="view-demo">Lihat Demo</a>
+                    <a href="#" class="project-link" data-lang="download-code">Download Code</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Muhammad Ibnu Abas. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language system
+        const translations = {
+            id: {
+                'back-to-projects': 'Kembali ke Proyek',
+                'category': 'Kategori',
+                'year': 'Tahun',
+                'about-project': 'Tentang Proyek Ini',
+                'smart-locker-desc': 'Smart Locker adalah sistem keamanan modern yang menggabungkan teknologi RFID dan PIN untuk memberikan akses yang aman dan fleksibel. Sistem ini dirancang untuk aplikasi perkantoran, sekolah, gym, atau area publik yang membutuhkan penyimpanan personal yang aman.',
+                'security-features': 'Fitur Keamanan',
+                'dual-auth': 'Dual Authentication: Kombinasi RFID card dan PIN untuk keamanan berlapis',
+                'user-reg': 'User Registration: Sistem pendaftaran pengguna baru dengan admin access',
+                'access-log': 'Access Logging: Pencatatan setiap aktivitas buka/tutup locker',
+                'emergency': 'Emergency Override: Master key untuk akses darurat',
+                'auto-lock': 'Auto-lock Timer: Otomatis mengunci setelah periode tertentu',
+                'system-components': 'Komponen Sistem',
+                'microcontroller': 'Arduino Uno/ESP32: Microcontroller utama untuk mengontrol sistem',
+                'rfid-reader': 'RFID Reader (RC522): Pembaca kartu RFID untuk identifikasi user',
+                'keypad': 'Keypad 4x4: Input PIN dan navigasi menu',
+                'lcd-display': 'LCD Display 16x2: Interface pengguna dan status informasi',
+                'servo-motor': 'Servo Motor: Aktuator untuk mekanisme kunci',
+                'buzzer': 'Buzzer: Feedback audio untuk status sistem',
+                'led-indicators': 'LED Indicators: Status visual (hijau/merah)',
+                'how-it-works': 'Cara Kerja Sistem',
+                'step1': 'Pengguna menempelkan kartu RFID ke reader',
+                'step2': 'Sistem memverifikasi ID kartu dengan database',
+                'step3': 'Jika valid, sistem meminta input PIN',
+                'step4': 'Setelah PIN benar, servo motor membuka kunci',
+                'step5': 'LED hijau menyala dan buzzer berbunyi sebagai konfirmasi',
+                'step6': 'Locker otomatis terkunci setelah waktu yang ditentukan',
+                'technical-specs': 'Spesifikasi Teknis',
+                'power-supply': 'Power Supply: 5V DC adapter atau baterai 9V',
+                'operating-temp': 'Operating Temperature: -10°C hingga 60°C',
+                'rfid-freq': 'RFID Frequency: 13.56 MHz',
+                'reading-range': 'Reading Range: 0-60mm',
+                'memory-capacity': 'Memory Capacity: Hingga 100 pengguna',
+                'development-process': 'Proses Pengembangan',
+                'dev1': 'Analisis kebutuhan dan perancangan sistem',
+                'dev2': 'Pembuatan schematic dan PCB design',
+                'dev3': 'Programming microcontroller dengan Arduino IDE',
+                'dev4': 'Integrasi komponen hardware',
+                'dev5': 'Testing keamanan dan fungsionalitas',
+                'dev6': 'Desain casing dan finishing',
+                'applications': 'Aplikasi Penggunaan',
+                'app1': 'Locker karyawan di perkantoran',
+                'app2': 'Locker siswa di sekolah/universitas',
+                'app3': 'Locker gym dan fitness center',
+                'app4': 'Locker bagasi di transportasi umum',
+                'app5': 'Locker penyimpanan di area publik',
+                'advantages': 'Keunggulan Sistem',
+                'adv1': 'Keamanan tinggi dengan dual authentication',
+                'adv2': 'User-friendly interface dengan LCD display',
+                'adv3': 'Mudah instalasi dan maintenance',
+                'adv4': 'Cost-effective dibanding sistem komersial',
+                'adv5': 'Customizable sesuai kebutuhan',
+                'results': 'Hasil & Dampak',
+                'results-desc': 'Smart Locker ini berhasil memberikan solusi keamanan yang reliable dengan tingkat akurasi autentikasi 99.5%. Sistem ini dapat meningkatkan keamanan area penyimpanan sambil memberikan kemudahan akses bagi pengguna yang terotorisasi.',
+                'view-demo': 'Lihat Demo',
+                'download-code': 'Download Code'
+            },
+            en: {
+                'back-to-projects': 'Back to Projects',
+                'category': 'Category',
+                'year': 'Year',
+                'about-project': 'About This Project',
+                'smart-locker-desc': 'Smart Locker is a modern security system that combines RFID technology and PIN to provide secure and flexible access. This system is designed for office applications, schools, gyms, or public areas that require secure personal storage.',
+                'security-features': 'Security Features',
+                'dual-auth': 'Dual Authentication: Combination of RFID card and PIN for layered security',
+                'user-reg': 'User Registration: New user registration system with admin access',
+                'access-log': 'Access Logging: Recording every locker open/close activity',
+                'emergency': 'Emergency Override: Master key for emergency access',
+                'auto-lock': 'Auto-lock Timer: Automatically locks after specified period',
+                'system-components': 'System Components',
+                'microcontroller': 'Arduino Uno/ESP32: Main microcontroller to control the system',
+                'rfid-reader': 'RFID Reader (RC522): RFID card reader for user identification',
+                'keypad': 'Keypad 4x4: PIN input and menu navigation',
+                'lcd-display': 'LCD Display 16x2: User interface and status information',
+                'servo-motor': 'Servo Motor: Actuator for locking mechanism',
+                'buzzer': 'Buzzer: Audio feedback for system status',
+                'led-indicators': 'LED Indicators: Visual status (green/red)',
+                'how-it-works': 'How the System Works',
+                'step1': 'User places RFID card on reader',
+                'step2': 'System verifies card ID with database',
+                'step3': 'If valid, system requests PIN input',
+                'step4': 'After correct PIN, servo motor opens lock',
+                'step5': 'Green LED lights up and buzzer sounds as confirmation',
+                'step6': 'Locker automatically locks after specified time',
+                'technical-specs': 'Technical Specifications',
+                'power-supply': 'Power Supply: 5V DC adapter or 9V battery',
+                'operating-temp': 'Operating Temperature: -10°C to 60°C',
+                'rfid-freq': 'RFID Frequency: 13.56 MHz',
+                'reading-range': 'Reading Range: 0-60mm',
+                'memory-capacity': 'Memory Capacity: Up to 100 users',
+                'development-process': 'Development Process',
+                'dev1': 'Requirements analysis and system design',
+                'dev2': 'Schematic and PCB design creation',
+                'dev3': 'Microcontroller programming with Arduino IDE',
+                'dev4': 'Hardware component integration',
+                'dev5': 'Security and functionality testing',
+                'dev6': 'Casing design and finishing',
+                'applications': 'Usage Applications',
+                'app1': 'Employee lockers in offices',
+                'app2': 'Student lockers in schools/universities',
+                'app3': 'Gym and fitness center lockers',
+                'app4': 'Luggage lockers in public transportation',
+                'app5': 'Storage lockers in public areas',
+                'advantages': 'System Advantages',
+                'adv1': 'High security with dual authentication',
+                'adv2': 'User-friendly interface with LCD display',
+                'adv3': 'Easy installation and maintenance',
+                'adv4': 'Cost-effective compared to commercial systems',
+                'adv5': 'Customizable according to needs',
+                'results': 'Results & Impact',
+                'results-desc': 'This Smart Locker successfully provides a reliable security solution with 99.5% authentication accuracy. This system can enhance storage area security while providing easy access for authorized users.',
+                'view-demo': 'View Demo',
+                'download-code': 'Download Code'
+            }
+        };
+
+        function getSystemLanguage() {
+            const browserLang = navigator.language || navigator.userLanguage;
+            return browserLang.startsWith('id') ? 'id' : 'en';
+        }
+
+        function applyLanguage(lang) {
+            document.querySelectorAll('[data-lang]').forEach(element => {
+                const key = element.getAttribute('data-lang');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        // Apply language on page load
+        const savedLanguage = localStorage.getItem('language');
+        const currentLanguage = savedLanguage || getSystemLanguage();
+        applyLanguage(currentLanguage);
+    </script>
+</body>
+</html>
