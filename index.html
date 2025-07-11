@@ -67,8 +67,8 @@
             </div>
             <div class="project-grid">
                 <div class="project-item project-1">
-                    <a href="fire-alarm/">
-                        <img src="images/project1.jpeg" alt="Fire Alarm">
+                    <a href="https://mibnua.my.id/fire-project/">
+                        <img src="fire-alarm/project1.jpeg" alt="Fire Alarm">
                         <div class="project-info">
                             <h4>Fire Alarm</h4>
                             <p class="category">IoT / Microcontroller</p>
@@ -79,7 +79,7 @@
 
                 <div class="project-item">
                     <a href="smart-farm/">
-                        <img src="images/project2.jpeg" alt="Smart Farm">
+                        <img src="smart-farm/project2.jpeg" alt="Smart Farm">
                         <div class="project-info">
                             <h4>Smart Farm</h4>
                             <p class="category">IoT / Microcontroller</p>
@@ -90,7 +90,7 @@
 
                 <div class="project-item">
                     <a href="monitoring-app/">
-                        <img src="images/project3.jpeg" alt="App Pemantau Suhu dan Kelembapan">
+                        <img src="monitoring-app/project3.jpeg" alt="App Pemantau Suhu dan Kelembapan">
                         <div class="project-info">
                             <h4 data-lang="project3-title">App Pemantau Suhu dan Kelembapan</h4>
                             <p class="category">Mobile App</p>
@@ -101,7 +101,7 @@
 
                 <div class="project-item">
                     <a href="smart-locker/">
-                        <img src="images/project4.jpeg" alt="Smart Locker">
+                        <img src="smart-locker/project4.jpeg" alt="Smart Locker">
                         <div class="project-info">
                             <h4>Smart Locker</h4>
                             <p class="category">IoT / Microcontroller</p>
@@ -159,307 +159,9 @@
         </div>
     </footer>
 
-    <!-- ENHANCED NAVIGATION SCRIPT -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded, initializing navigation...');
-            
-            // Get navigation elements
-            const navLinks = document.querySelectorAll('.nav-link');
-            const header = document.querySelector('header');
-            const sections = document.querySelectorAll('section[id]');
-            
-            if (!navLinks.length) {
-                console.error('No navigation links found');
-                return;
-            }
-            
-            // Header auto-hide functionality
-            let lastScrollTop = 0;
-            const hideThreshold = 80;
-            
-            function handleScroll() {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                // Header auto-hide logic
-                if (header) {
-                    if (scrollTop > lastScrollTop && scrollTop > hideThreshold) {
-                        header.style.transform = 'translateY(-100%)';
-                        header.style.opacity = '0.95';
-                    } else {
-                        header.style.transform = 'translateY(0)';
-                        header.style.opacity = '1';
-                    }
-                }
-                
-                // Update active nav link based on scroll position
-                updateActiveNavLink();
-                
-                lastScrollTop = scrollTop;
-            }
-            
-            // Function to update active nav link based on current section in view
-            function updateActiveNavLink() {
-                const scrollPosition = window.scrollY + 150; // Offset for header
-                let current = '';
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    
-                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                // If at the very top, set hero as active
-                if (window.scrollY < 100) {
-                    current = 'hero';
-                }
-                
-                // Update active class on nav links
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('data-section') === current) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-            
-            // Setup navigation click handlers with smooth scroll
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const sectionId = this.getAttribute('data-section');
-                    const targetSection = document.getElementById(sectionId);
-                    
-                    if (targetSection) {
-                        const targetY = targetSection.offsetTop - 80; // Account for header height
-                        
-                        window.scrollTo({
-                            top: targetY,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Manually update active state
-                        navLinks.forEach(nl => nl.classList.remove('active'));
-                        this.classList.add('active');
-                    }
-                });
-            });
-            
-            // Add scroll event listener
-            window.addEventListener('scroll', handleScroll);
-            
-            // Set initial active state
-            setTimeout(() => {
-                updateActiveNavLink();
-                console.log('Navigation initialized successfully');
-                console.log('Navigation links:', navLinks.length);
-            }, 100);
-        });
-    </script>
-
-    <script>
-        // ========== BASIC LANGUAGE & THEME (Working) ==========
-        const translations = {
-            id: {
-                'nav-home': 'Beranda',
-                'nav-projects': 'Proyek',
-                'nav-about': 'Tentang',
-                'nav-contact': 'Kontak',
-                'section-projects': 'Proyek Saya',
-                'section-about': 'Tentang Saya',
-                'section-contact': 'Kontak',
-                'project1-desc': 'Mengembangkan sistem deteksi kebakaran berbasis sensor suhu dan gas dengan mikrokontroler.',
-                'project2-desc': 'Merancang sistem monitoring kelembapan tanah dan suhu otomatis untuk pertanian pintar.',
-                'project3-title': 'App Pemantau Suhu dan Kelembapan',
-                'project3-desc': 'Mengembangkan aplikasi mobile monitoring suhu dan kelembapan menggunakan MIT App Inventor dengan integrasi API.',
-                'project4-desc': 'Merancang sistem keamanan locker pintar dengan fitur autentikasi PIN dan teknologi RFID.',
-                'about-desc1': 'Saya adalah mahasiswa Teknik Elektro semester 6 dengan konsentrasi Elektronika Kendali. Memiliki passion dalam pengembangan teknologi IoT dan berpengalaman dalam merancang sistem elektronik berbasis mikrokontroler ESP32 dan Arduino, serta kompeten dalam Research and Development, perancangan Schematic, dan 3D Design.',
-                'about-skills': 'Keahlian Teknis:',
-                'contact-desc': 'Saya terbuka untuk peluang kolaborasi profesional dan diskusi mengenai proyek-proyek inovatif. Silakan hubungi saya melalui kontak di bawah ini.'
-            },
-            en: {
-                'nav-home': 'Home',
-                'nav-projects': 'Projects',
-                'nav-about': 'About',
-                'nav-contact': 'Contact',
-                'section-projects': 'My Projects',
-                'section-about': 'About Me',
-                'section-contact': 'Contact',
-                'project1-desc': 'Developing a fire detection system based on temperature and gas sensors with microcontroller.',
-                'project2-desc': 'Designing an automatic soil moisture and temperature monitoring system for smart farming.',
-                'project3-title': 'Temperature & Humidity Monitoring App',
-                'project3-desc': 'Developing a mobile application for temperature and humidity monitoring using MIT App Inventor with API integration.',
-                'project4-desc': 'Designing a smart locker security system with PIN authentication and RFID technology features.',
-                'about-desc1': 'I am a 6th semester Electrical Engineering student with a concentration in Control Electronics. I have a passion for IoT technology development and experience in designing electronic systems based on ESP32 and Arduino microcontrollers, as well as competence in Research and Development, Schematic design, and 3D Design.',
-                'about-skills': 'Technical Skills:',
-                'contact-desc': 'I am open to professional collaboration opportunities and discussions about innovative projects. Please contact me through the contacts below.'
-            }
-        };
-
-        // Language system
-        const languageToggle = document.getElementById('language-toggle');
-        const langText = document.getElementById('lang-text');
-        function getSystemLanguage() {
-            const browserLang = navigator.language || navigator.userLanguage;
-            return browserLang.startsWith('id') ? 'id' : 'en';
-        }
-        function applyLanguage(lang) {
-            document.querySelectorAll('[data-lang]').forEach(element => {
-                const key = element.getAttribute('data-lang');
-                if (translations[lang] && translations[lang][key]) {
-                    element.textContent = translations[lang][key];
-                }
-            });
-            langText.textContent = lang === 'id' ? 'EN' : 'ID';
-        }
-        const savedLanguage = localStorage.getItem('language');
-        const currentLanguage = savedLanguage || getSystemLanguage();
-        applyLanguage(currentLanguage);
-        languageToggle.addEventListener('click', () => {
-            const currentLang = langText.textContent === 'EN' ? 'id' : 'en';
-            const newLang = currentLang === 'id' ? 'en' : 'id';
-            applyLanguage(newLang);
-            localStorage.setItem('language', newLang);
-        });
-
-        // Theme system
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
-        const icon = themeToggle.querySelector('i');
-        function getSystemTheme() {
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                return 'dark';
-            }
-            return 'light';
-        }
-        function applyTheme(theme) {
-            if (theme === 'light') {
-                body.classList.add('light-mode');
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                body.classList.remove('light-mode');
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            }
-        }
-        const savedTheme = localStorage.getItem('theme');
-        const currentTheme = savedTheme || getSystemTheme();
-        applyTheme(currentTheme);
-        themeToggle.addEventListener('click', () => {
-            const isLightMode = body.classList.contains('light-mode');
-            const newTheme = isLightMode ? 'dark' : 'light';
-            applyTheme(newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
-    </script>
-
-
-
-    <!-- ANIMATIONS SCRIPT -->
-    <script>
-        function initScrollReveal() {
-            const projectItems = document.querySelectorAll('.project-item');
-            projectItems.forEach((item, index) => {
-                if (index % 2 === 0) {
-                    item.classList.add('reveal-left');
-                } else {
-                    item.classList.add('reveal-right');
-                }
-            });
-            
-            const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -100px 0px' };
-            const projectObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    const item = entry.target;
-                    const index = Array.from(projectItems).indexOf(item);
-                    
-                    if (entry.isIntersecting) {
-                        const delay = index * 150;
-                        setTimeout(() => {
-                            item.classList.add('revealed');
-                            item.classList.remove('reveal-left', 'reveal-right');
-                        }, delay);
-                    } else {
-                        item.classList.remove('revealed');
-                        if (index % 2 === 0) {
-                            item.classList.add('reveal-left');
-                        } else {
-                            item.classList.add('reveal-right');
-                        }
-                    }
-                });
-            }, observerOptions);
-            
-            projectItems.forEach(item => projectObserver.observe(item));
-        }
-
-        function initAboutAnimation() {
-            const aboutContent = document.querySelector('.about-content');
-            const aboutParagraphs = document.querySelectorAll('.about-content p');
-            if (!aboutContent) return;
-            
-            const aboutObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
-                        aboutParagraphs.forEach((paragraph, index) => {
-                            setTimeout(() => paragraph.classList.add('revealed'), 300 + (index * 200));
-                        });
-                    } else {
-                        entry.target.classList.remove('revealed');
-                        aboutParagraphs.forEach(paragraph => paragraph.classList.remove('revealed'));
-                    }
-                });
-            }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
-            
-            aboutObserver.observe(aboutContent);
-        }
-        
-        function initContactAnimation() {
-            const contactInfo = document.querySelector('.contact-info');
-            const contactParagraph = document.querySelector('.contact-info p');
-            const contactMethods = document.querySelector('.contact-methods');
-            const contactItems = document.querySelectorAll('.contact-item');
-            if (!contactInfo) return;
-            
-            const contactObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
-                        setTimeout(() => { if (contactParagraph) contactParagraph.classList.add('revealed'); }, 300);
-                        setTimeout(() => { if (contactMethods) contactMethods.classList.add('revealed'); }, 600);
-                        contactItems.forEach((item, index) => {
-                            setTimeout(() => item.classList.add('revealed'), 900 + (index * 150));
-                        });
-                    } else {
-                        entry.target.classList.remove('revealed');
-                        if (contactParagraph) contactParagraph.classList.remove('revealed');
-                        if (contactMethods) contactMethods.classList.remove('revealed');
-                        contactItems.forEach(item => item.classList.remove('revealed'));
-                    }
-                });
-            }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
-            
-            contactObserver.observe(contactInfo);
-        }
-        
-        // Initialize animations when DOM is ready
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                try {
-                    initScrollReveal();
-                    initAboutAnimation();
-                    initContactAnimation();
-                } catch (error) {
-                    console.error('Animation error:', error);
-                }
-            }, 200);
-        });
-    </script>
+    <!-- JavaScript Files -->
+    <script src="js/navigation.js"></script>
+    <script src="js/language-theme.js"></script>
+    <script src="js/animations.js"></script>
 </body>
 </html>

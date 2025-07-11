@@ -93,7 +93,7 @@ body {
     margin: 0;
     padding: 0;
     padding-top: 60px; /* Space for fixed header */
-    background: url('images/background-maindark.jpg') no-repeat center center fixed;
+    background: url('images/backgrounds/background-maindark.jpg') no-repeat center center fixed;
     background-size: cover;
     color: var(--light-grey);
     line-height: 1.6;
@@ -824,7 +824,7 @@ body.light-mode .project-description-content h3 {
 
 /* Light Mode Styles */
 body.light-mode {
-    background: url('images/background-mainwhite.jpg') no-repeat center center fixed;
+    background: url('images/backgrounds/background-mainwhite.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #2c3e50;
 }
