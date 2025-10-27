@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kartu Cinta untukmu 💌</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="center">
+      <section class="postcard-wrapper">
+        <div class="postcard" id="postcard" aria-live="polite">
+          <div class="card front">
+            <div class="photo">
+              <img
+                src="images/ara.jpeg"
+                alt="Foto kita - buka untuk melihat isi surat"
+              />
+            </div>
+            <div class="stamp">Untuk Ara</div>
+            <button class="btn open" id="openBtn" aria-label="Buka kartu">
+              Buka Surat
+            </button>
+          </div>
+
+          <div class="card back">
+            <div class="message">
+              <h2 class="handwrite">Untuk Sayangku</h2>
+              <p
+                id="typed"
+                class="typed"
+                aria-label="Pesan romantis akan diketik di sini"
+              ></p>
+              <div class="actions">
+                <button class="btn gift" id="confettiBtn">❤️❤️❤️</button>
+                <button class="btn close" id="closeBtn">Tutup</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="effects" aria-hidden="true"></div>
+      </section>
+
+      <footer class="footer">Dibuat dengan ♥ — Clauche</footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
