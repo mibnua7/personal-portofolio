@@ -8,7 +8,281 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Sacramento&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <style>
+      :root {
+        --bg: #fff6fb;
+        --card: #ffffff;
+        --accent: #ff77aa;
+        --muted: #7a7a7a;
+        --shadow: 0 6px 18px rgba(255, 119, 170, 0.12);
+        --radius: 18px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        background: linear-gradient(180deg, var(--bg), #fff);
+        color: #333;
+        -webkit-font-smoothing: antialiased;
+      }
+      /* Reset + root vars */
+      :root {
+        --bg1: #fff6fb;
+        --bg2: #fff0f8;
+        --card: #ffffff;
+        --accent: #ff6f99;
+        --accent-2: #ffb1c9;
+        --muted: #6c6c6c;
+        --shadow: 0 18px 40px rgba(255, 102, 153, 0.14);
+        --radius: 18px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Arial;
+        background: radial-gradient(
+          circle at 10% 10%,
+          #fff7fb 0%,
+          var(--bg1) 35%,
+          var(--bg2) 100%
+        );
+        color: #333;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      .center {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 28px;
+      }
+      .postcard-wrapper {
+        position: relative;
+      }
+
+      .postcard {
+        width: 720px;
+        max-width: 94vw;
+        height: 480px;
+        position: relative;
+        perspective: 1200px;
+      }
+      .postcard .card {
+        position: absolute;
+        inset: 0;
+        border-radius: 16px;
+        background: var(--card);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+        transition: transform 800ms cubic-bezier(0.2, 0.9, 0.25, 1);
+      }
+      .postcard .front {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        transform: rotateY(0);
+      }
+      .postcard .back {
+        transform: rotateY(180deg);
+        padding: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .postcard.is-flipped .front {
+        transform: rotateY(-180deg);
+      }
+      .postcard.is-flipped .back {
+        transform: rotateY(0);
+      }
+
+      .photo {
+        width: 100%;
+        height: calc(100% - 86px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 12px;
+        display: block;
+      }
+      .stamp {
+        position: absolute;
+        left: 18px;
+        top: 14px;
+        background: linear-gradient(180deg, var(--accent), var(--accent-2));
+        color: #fff;
+        padding: 6px 12px;
+        border-radius: 10px;
+        font-weight: 600;
+        box-shadow: 0 8px 20px rgba(255, 105, 150, 0.12);
+      }
+
+      .btn {
+        border: none;
+        background: #fff;
+        padding: 10px 14px;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--accent);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      }
+      .btn.open {
+        position: absolute;
+        right: 18px;
+        bottom: 18px;
+        background: linear-gradient(180deg, var(--accent), #ff4d8a);
+        color: #fff;
+      }
+      .btn.close {
+        background: #fff;
+        color: var(--accent);
+      }
+      .btn.gift {
+        background: linear-gradient(180deg, #fff, #fff7fb);
+        color: var(--accent);
+        border: 1px solid rgba(255, 105, 150, 0.12);
+      }
+
+      .message {
+        max-width: 640px;
+      }
+      .handwrite {
+        font-family: Sacramento, cursive;
+        font-size: 2.2rem;
+        margin: 0 0 8px;
+        color: var(--accent);
+      }
+      .typed {
+        font-size: 1.05rem;
+        line-height: 1.6;
+        color: #444;
+        min-height: 96px;
+      }
+      .actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .footer {
+        margin-top: 18px;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      /* Effects container */
+      #effects {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+      }
+
+      /* hearts */
+      .heart {
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        background: transparent;
+        transform: translate(-50%, -50%) scale(0.6);
+        opacity: 0.95;
+      }
+      .heart:before,
+      .heart:after {
+        content: "";
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        background: var(--accent);
+        border-radius: 50%;
+      }
+      .heart:before {
+        left: 11px;
+      }
+      .heart:after {
+        top: 11px;
+      }
+      .heart.ani {
+        animation: floatUp 1600ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+      @keyframes floatUp {
+        0% {
+          transform: translate(-50%, -50%) scale(0.2);
+          opacity: 0;
+        }
+        30% {
+          opacity: 1;
+          transform: translate(-50%, -70%) scale(1);
+        }
+        100% {
+          transform: translate(-50%, -300%) scale(0.8);
+          opacity: 0;
+        }
+      }
+
+      /* confetti */
+      .confetti {
+        position: absolute;
+        width: 10px;
+        height: 14px;
+        opacity: 0.95;
+      }
+      .confetti.ani {
+        animation: fall 2000ms linear forwards;
+      }
+      @keyframes fall {
+        0% {
+          transform: translateY(-10vh) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(120vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      /* Responsif */
+      @media (max-width: 540px) {
+        .postcard {
+          height: 66vh;
+        }
+        .handwrite {
+          font-size: 1.8rem;
+        }
+        .typed {
+          min-height: 120px;
+        }
+      }
+    </style>
   </head>
   <body>
     <main class="center">
