@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel Darurat IoT</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f2f5;
+        margin: 0;
+      }
+      .container {
+        text-align: center;
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 400px;
+      }
+      h2 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+      button {
+        padding: 15px 30px;
+        font-size: 18px;
+        background-color: #0088cc; /* Warna Biru Telegram */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+        width: 100%;
+      }
+      button:hover {
+        background-color: #006699;
+      }
+      #status {
+        margin-top: 20px;
+        color: #666;
+        font-size: 14px;
+        min-height: 40px;
+        white-space: pre-line;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Panel Kontrol Suara</h2>
+      <button onclick="broadcastNotifikasi()">⚠️ Kirim Peringatan</button>
+      <div id="status"></div>
+    </div>
+
+    <script>
+      // TOKEN BOT (Tinggal 1)
+      const BOT_TOKEN = "8444042362:AAFcBMs9gKHlV0mZTZPDuoMgcQ8E6-34ows";
+
+      // DAFTAR ID PENERIMA
+      const TARGETS = ["6237510793", "1529216681"];
+
+      async function broadcastNotifikasi() {
+        const statusDiv = document.getElementById("status");
+        const pesan = "⚠️ Terdengar Suara dari ESP32";
+
+        statusDiv.innerText = "Mengirim...";
+        statusDiv.style.color = "blue";
+
+        let requests = [];
+
+        // Loop hanya untuk Target User (Bot-nya cuma 1)
+        TARGETS.forEach((chatId) => {
+          const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(
+            pesan
+          )}`;
+          requests.push(fetch(url));
+        });
+
+        try {
+          // Kirim ke semua target
+          await Promise.all(requests);
+
+          statusDiv.innerText = "✅ Sukses! Terkirim ke 2 penerima.";
+          statusDiv.style.color = "green";
+        } catch (error) {
+          console.error("Error:", error);
+          statusDiv.innerText = "❌ Gagal koneksi.";
+          statusDiv.style.color = "red";
+        }
+      }
+    </script>
+  </body>
+</html>
